@@ -1,0 +1,50 @@
+<div *ngIf="formCreated" [formGroup]="addressFields" class="row pad-tb-20">
+  <!-- Street Address -->
+  <div class="col-xs-12 col-md-9">
+    <label for="streetAddress" class="input-field-title">{{ 'generic.address.title.streetAddress' | translate }}</label>
+    <input id="streetAddress" class="form-control input-field-content" spellcheck="false" type="text" formControlName="streetAddress">
+    <div *ngIf="showErrors">
+      <div *ngFor="let err of addressErrors.streetAddress" class="alert alert-danger">
+        {{ 'generic.address.error.streetAddress.' + err | translate }}
+      </div>
+    </div>
+  </div>
+  <!-- Unit Number -->
+  <div class="col-xs-12 col-md-3">
+    <label for="unitNumber" class="input-field-title">{{ 'generic.address.title.unitNumber' | translate }}</label>
+    <input id="unitNumber" class="form-control input-field-content" spellcheck="false" type="text" formControlName="unitNumber">
+  </div>
+  <!-- City -->
+  <div class="col-xs-12 col-md-4">
+    <label for="city" class="input-field-title">{{ 'generic.address.title.city' | translate }}</label>
+    <input id="city" class="form-control input-field-content" spellcheck="false" type="text" formControlName="city">
+    <div *ngIf="showErrors">
+      <div *ngFor="let err of addressErrors.city" class="alert alert-danger">
+        {{ 'generic.address.error.city.' + err | translate }}
+      </div>
+    </div>
+  </div>
+  <!-- Province/ Territory -->
+  <div class="col-xs-12 col-md-4">
+    <label for="province" class="input-field-title">{{ 'generic.address.title.province' | translate }}</label>
+    <select id="province" class="form-control input-field-content" formControlName="province">
+      <option *ngIf="!addressFields.value.province" selected disabled value=null>{{ 'form.dropdown.select' | translate }}</option>
+      <option *ngFor="let opt of addressService.getProvinceAttay()" [selected]="opt === addressFields.value.province">{{opt}}</option>
+    </select>
+    <div *ngIf="showErrors">
+      <div *ngFor="let err of addressErrors.province" class="alert alert-danger">
+        {{ 'generic.address.error.province.' + err | translate }}
+      </div>
+    </div>
+  </div>
+  <!-- Postal Code -->
+  <div class="col-xs-12 col-md-4">
+    <label for="postalCode" class="input-field-title">{{ 'generic.address.title.postalCode' | translate }}</label>
+    <input id="postalCode" class="form-control input-field-content" spellcheck="false" type="text" formControlName="postalCode">
+    <div *ngIf="showErrors">
+      <div *ngFor="let err of addressErrors.postalCode" class="alert alert-danger">
+        {{ 'generic.address.error.postalCode.' + err | translate }}
+      </div>
+    </div>
+  </div>
+</div>

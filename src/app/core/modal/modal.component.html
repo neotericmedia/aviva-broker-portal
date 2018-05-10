@@ -1,0 +1,38 @@
+<!--
+  Usage:
+  ** Parameters:
+    title - Text title
+    size - ngx-bootstrap value of lg for large or sm for small
+    closeTitle - Title of close button
+
+  ** Transclusions:
+    Declare class of modal-body-content or modal-footer-content.
+    <modal #myModal title="MyTitle" size="lg">
+      <div class="modal-body-content">My body</div>
+      <div class="modal-footer-content">My Footer</div>
+    </modal>
+
+  ** Functions:
+    show - Show this modal, e.g. this.myModal.show()
+    hide - Hide this modal, e.g. this.myModal.hide()
+-->
+<!-- Spinner -->
+<loading-spinner *ngIf="isSpinnerVisible" class="spinner-fullscreen"></loading-spinner>
+<div class='modal fade' bsModal #modal='bs-modal' [config]="config" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class='modal-dialog modal-{{ size }}'>
+    <div class='modal-content'>
+      <div *ngIf="displayHeader !== false" class='modal-header'>
+        <h4 class='modal-title pull-left'>{{ title }}</h4>
+        <button type='button' class='close pull-right' (click)='modal.hide()' [attr.aria-label]="closeTitle">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+        <ng-content select=".modal-body-content"></ng-content>
+      </div>
+      <div class='modal-footer'>
+        <ng-content select=".modal-footer-content"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

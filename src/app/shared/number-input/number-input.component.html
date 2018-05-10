@@ -1,0 +1,7 @@
+<input-envelope [type]="type">
+  <input #myInput disable-mouse-wheel number-only-formatter maxlength="50" spellcheck="false"
+    [min]="min" [name]="name" [value]="inputValue" [attr.disabled]="disabled ? true : null"
+    (input)="onInputChange($event.target.value)"
+    placeholder="{{ placeholderKey | translate }}"
+    type="text" class="form-control input-field-content input-envelope-content" >
+</input-envelope>

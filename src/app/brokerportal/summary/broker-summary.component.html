@@ -1,0 +1,184 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container pad-b-30">
+    <email-modal #sendPdfModal subject="" email="" message="" sendButtonTitle="{{ 'buttons.sendPdf' | translate }}" [onSend]="onSendPdf"></email-modal>
+    <quote-breadcrumb *ngIf="!details" step="summary" [qNumber]="qNumber"></quote-breadcrumb>
+    <form *ngIf="isReady" novalidate [formGroup]="quoteSummaryForm" class="content-wrap">
+      <div class="row" *ngIf="businessInfo && summary">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="card premium-details">
+            <h2 class="title pad-b-15">{{ 'generic.premiumDetails.headTitle' | translate }}</h2>
+            <div class="card-details">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 date-and-quote">
+                <div class="row">
+                  <div class="block">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <div class="info-title pad-tb-10">{{ premiumText | translate }}</div>
+                      <div class="info bold">
+                        <span class="lrgFont">{{ premiumValue.calculatedTotalPremium | myRoundPipe | myNumberFormatter:'currency' }}</span>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <div class="info-title pad-tb-10">{{ 'generic.premiumDetails.title.quoteNumber' | translate }}</div>
+                      <div class="info bold">{{ quoteNumber }}</div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <deviate-by *ngIf="isReady" [parentForm]="quoteSummaryForm" [premiumValue]="premiumValue"></deviate-by>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <div class="info-title pad-tb-10">{{ 'generic.premiumDetails.title.commission' | translate }}</div>
+                      <div class="info bold">{{ 20 | myNumberFormatter:'percent' }}</div>
+                    </div>
+                  </div>
+                  <div class="block">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <div class="info-title pad-tb-10">{{ 'generic.premiumDetails.title.effectiveDate' | translate }}</div>
+                      <div class="info bold">{{ formatDate(effectiveDate) }}</div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                      <div class="info-title pad-tb-10">{{ 'generic.premiumDetails.title.expiryDate' | translate }}</div>
+                      <div class="info bold">{{ formatDate(expiryDate) }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <choice-scroller class="covScroll" [choiceList]='covList'></choice-scroller>
+            </div>
+          </div>
+          <!-- Customer and Broker Details -->  
+          <div class="broker-business-details">
+            <span class="title">{{ 'generic.businessDetails.title.aboutTheBusiness' | translate }}</span>
+            <div class="details-interior">
+              <div class="row">
+                <div class="col-xs-12">
+                  <span class="bld">{{ businessInfo.displayBusinessName || businessInfo.namedInsured }}</span>
+                  <br> {{ businessInfo.companyAddress.streetAddress }} {{ businessInfo.companyAddress.city }}, {{ businessInfo.companyAddress.province}},
+                  {{ businessInfo.companyAddress.postalCode }}
+                </div>
+              </div>
+              <div class="divider-hr"></div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                  {{ 'generic.businessDetails.title.description' | translate }}
+                  <br>
+                  <span class="bld">{{ businessInfo.industryCodeDescription }}</span>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                  {{ 'generic.businessDetails.title.industryCode' | translate }}
+                  <br>
+                  <span class="bld">{{ businessInfo.industryCode}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Coverages -->
+          <!-- TODO: Turn this into a component to be shared between broker and underwriter -->
+          <accordion>
+            <accordion-group *ngFor="let lobCoverage of lobCoverageList" [isOpen]="false" class="ac-table {{ 'icon-' + lobCoverage.LOBCode.toLowerCase() }}">
+              <div accordion-heading class="clearfix">
+                <div class="row accordion-heading">
+                  <div class="col-xs-10 col-sm-9 col-md-9 col-lg-9 pad-0">
+                    <span class="{{iconClass}} icon-left icon-height-37"></span>
+                    <span>{{ lobCoverage.LOBDescription | translate }}</span>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <!-- Todo: remove static check when dataset confirmed by John -->
+                    <button *ngIf="lobCoverage.LOBCode !== 'PO'" class="btn secondary reverse smallBtn" (click)="onEditCoverageClick(lobCoverage.LOBCode)">
+                      <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp; Edit Coverage</button>
+                  </div>
+                  <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 pad-l-0 text-right">
+                    <span class="icon-arrow" [ngClass]="{'up': myGroup?.isOpen, 'down': !myGroup?.isOpen}"></span>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-striped row-hr-border-only">
+                <thead>
+                  <tr>
+                    <th class="col-xs-7">{{ 'summary.coverage.column.coverage' | translate }}</th>
+                    <th class="col-xs-1">{{ 'summary.coverage.column.limit' | translate }}</th>
+                    <th class="col-xs-2">{{ 'summary.coverage.column.deductible' | translate }}</th>
+                    <th class="col-xs-1">{{ 'summary.coverage.column.rate' | translate }}</th>
+                    <th class="col-xs-1">{{ 'summary.coverage.column.premium' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let coverage of lobCoverage.coverageList">
+                    <td>{{ coverage.Locale.Title }}</td>
+                    <td>{{ coverage.Limit ? (coverage.Limit | myNumberFormatter:'currency') : '' }}</td>
+                    <td>{{ formatDeductibles(coverage) }}</td>
+                    <td>{{ coverage.Rate ? (coverage.Rate | myNumberFormatter:'decimal') : '' }}</td>
+                    <td>{{ coverage.Premium ? (coverage.Premium | myNumberFormatter:'currency') : ('summary.coverage.included'
+                      | translate) }}</td>
+                  </tr>
+                  <!-- ALS Limit -->
+                  <tr *ngIf="lobCoverage.LOBCode === 'BI' && showALSLimit">
+                    <td>{{ 'summary.coverage.ALSLimit' | translate }}</td>
+                    <td>{{ ALSLimit | myNumberFormatter:'currency' }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </accordion-group>
+            <!-- IndustryCode conditions -->
+            <accordion-group *ngIf="getIndustryCodeCondition().length" [isOpen]=true [title]="translate.instant('summary.quoteConditions.header.title')">
+              <div class="pad-lr-80 accordion-section-content">
+                <ol class="quote-condition-container">
+                  <li *ngFor="let industryCodeCondition of getIndustryCodeCondition()" class="quote-condition">
+                    {{ industryCodeCondition.Locale.Description }}
+                  </li>
+                </ol>
+              </div>
+            </accordion-group>
+          </accordion>
+          <!-- Action Buttons -->
+          <div class="row action-buttons-group actionButtons">
+            <div class="col-xs-4 text-left">
+              <button class="btn secondary reverse" (click)="onBack()">{{ 'buttons.back' | translate }}</button>
+            </div>
+            <div class="col-xs-4 text-center">
+              <button class="btn secondary" (click)="sendPdfModal.show()">{{ 'buttons.sendPdf' | translate }}</button>
+            </div>
+            <div class="col-xs-4 text-right">
+              <button class="btn primary" (click)="onBind()">{{ 'buttons.bind' | translate }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Edit Coverages -->
+      <!-- Note: Temporary implementation. Requires functional hardening + validation. -->
+      <div *ngIf="details">
+        <!-- <form *ngIf="isReady" novalidate [formGroup]="quoteSummaryForm" class="content-wrap"> -->
+        <!-- Action Buttons -->
+        <!-- Note: should these be moved into lob-details as componenet? Assume save and cancel will happen on two levels, cancell would emit output? -->
+        <div class="row">
+          <div class="col-xs-6 text-left">
+            <button class="btn secondary" (click)="showSummary()">{{ 'cancel' | translate }}</button>
+          </div>
+          <div class="col-xs-6 text-right">
+            <button class="btn primary" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+          </div>
+        </div>
+        <div class="editCovUI">
+          <lob-details *ngIf="selectedLob" class="accordion-section-content"
+            [parentForm]="lobDetailsForm"
+            [lobCode]="selectedLob"
+            [lobCoverages]="mergedLobCvgsHash[selectedLob]">
+          </lob-details>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 text-left pad-tb-40">
+            <button class="btn secondary" (click)="showSummary()">{{ 'cancel' | translate }}</button>
+          </div>
+          <div class="col-xs-6 text-right pad-tb-40">
+            <button class="btn primary" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

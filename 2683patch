@@ -1,0 +1,81 @@
+diff --git a/src/app/app.component.scss b/src/app/app.component.scss
+index fa88b21..6586ac4 100644
+--- a/src/app/app.component.scss
++++ b/src/app/app.component.scss
+@@ -2,7 +2,6 @@ $fonts-path: "fonts";
+ $image-path: "images";
+ 
+ @import "~digital-css/assets/stylesheets/aviva-theme";
+-@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+ @import "../styles/_accordion";
+ @import "../styles/_buttons";
+ @import "../styles/_pagination";
+diff --git a/src/app/base/base-form.component.ts b/src/app/base/base-form.component.ts
+index f54f567..8ee1066 100644
+--- a/src/app/base/base-form.component.ts
++++ b/src/app/base/base-form.component.ts
+@@ -25,8 +25,4 @@ export class BaseFormComponent extends BaseComponent {
+       showWeekNumbers: false
+     };
+   }
+-
+-  protected formatDate(date: Date) {
+-    return moment(date).format('ll');
+-  }
+ }
+diff --git a/src/app/quote/businessInfo/businessInfo.component.html b/src/app/quote/businessInfo/businessInfo.component.html
+index 0febde1..bc682d9 100644
+--- a/src/app/quote/businessInfo/businessInfo.component.html
++++ b/src/app/quote/businessInfo/businessInfo.component.html
+@@ -450,10 +450,10 @@
+ 											<span class="label-text">{{ 'business.claims.title.lossDate' | translate }}</span>
+ 										</label>
+ 										<div>
+-											<input type="text" readonly id="claim-{{i}}-lossDatePicker"
++											<input type="text" readonly placeholder="MM/DD/YYYY" id="claim-{{i}}-lossDatePicker"
+ 												class="form-control icon-r-calendar dateinput input-field-content dateinput-active"
+ 												[bsValue]="claim.getLossDate" [outsideClick]="true" bsDatepicker [bsConfig]="bsDatepickerConfig"
+-												value="{{ claim.getLossDate ? formatDate(claim.getLossDate) : null }}"
++												value="{{ claim.getLossDate ? moment(claim.getLossDate).format('MMM DD, YYYY') : null }}"
+ 												(bsValueChange)="onUpdateLossDate($event, claim, i)">
+ 											<div *ngIf="showControlsErrorsIfAny">
+ 												<div *ngFor="let err of formErrors.claims[i].lossDate" class="alert alert-danger">
+diff --git a/src/app/quote/businessInfo/businessInfo.component.scss b/src/app/quote/businessInfo/businessInfo.component.scss
+index b24c48e..a90d503 100644
+--- a/src/app/quote/businessInfo/businessInfo.component.scss
++++ b/src/app/quote/businessInfo/businessInfo.component.scss
+@@ -1,4 +1,5 @@
+ @import "../../../styles/quoter";
++@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+ 
+ .dateinput-active {
+   cursor: pointer;
+diff --git a/src/app/quote/businessInfo/date-quote/business-date-quote.component.html b/src/app/quote/businessInfo/date-quote/business-date-quote.component.html
+index 74d0330..3a30d5c 100644
+--- a/src/app/quote/businessInfo/date-quote/business-date-quote.component.html
++++ b/src/app/quote/businessInfo/date-quote/business-date-quote.component.html
+@@ -8,10 +8,10 @@
+             <span class="label-text">{{ 'datepicker.effectiveDate.title' | translate }}</span>
+           </label>
+           <div>
+-            <input type="text" readonly
++            <input type="text" readonly placeholder="MM/DD/YYYY"
+               class="input-field-content form-control icon-r-calendar dateinput dateinput-active"
+               [bsValue]="initEffectiveDate" [minDate]="minEffectiveDate" [maxDate]="maxEffectiveDate"
+-              value="{{ formatDate(dateQuoteInfo.effectiveDate) }}"
++              value="{{ moment(dateQuoteInfo.effectiveDate).format('MMM DD, YYYY') }}"
+               formControlName="effectiveDt" [outsideClick]="true" bsDatepicker #dp="bsDatepicker"
+               [bsConfig]="bsDatepickerConfig" (bsValueChange)="onUpdateEffectiveDate($event)">
+             <div *ngIf="showControlsErrorsIfAny">
+@@ -27,9 +27,9 @@
+             <span class="label-text">{{ 'datepicker.expiryDate.title' | translate }}</span>
+           </label>
+           <div>
+-            <input type="text" readonly
++            <input type="text" readonly placeholder="MM/DD/YYYY"
+               class="input-field-content form-control icon-r-calendar dateinput"
+-              value="{{ formatDate(dateQuoteInfo.expiryDate) }}" formControlName="expiryDt">
++              value="{{ moment(dateQuoteInfo.expiryDate).format('MMM DD, YYYY') }}" formControlName="expiryDt">
+           </div>
+         </div>
+       </div>

@@ -1,0 +1,15 @@
+<div class="mr-t-20 mr-b-50">
+  {{ lobQuestionAnswers | json }}
+  <div class="pro-nav" [ngClass]="{
+    'tierce': routes.length === 3,
+    'quarter': routes.length === 4}">
+    <div class="hr-line"></div>
+    <ul>
+      <li *ngFor="let route of routes; let routeIdx = index" [ngClass]="{
+        'completed': isCompleted(route),
+        'current': isCurrent(route)}">
+        <span><a (click)="checkIndex(routeIdx)">{{ 'quoteBreadcrumb.' + route.name | translate }}</a></span>
+      </li>
+    </ul>
+  </div>
+</div>

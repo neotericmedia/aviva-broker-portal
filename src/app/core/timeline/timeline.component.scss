@@ -1,0 +1,87 @@
+@import "../../../styles/variables";
+
+.timeline {
+    list-style: none;
+    padding: 20px 0 20px;
+    position: relative;
+    background-color: $sidebar-background-color;
+}
+
+.timeline-card {
+    height: $card-height;	
+    width: 220px;	
+    border: 0px solid $color-white-ff;	
+    background-color: $color-white-ff;	
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+    position: relative;
+    margin-bottom: 34px;
+    margin-left: 98px;
+}
+
+.timeline-card > .timeline-card-title {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    padding-left: 10px;
+    color: $color-grey-5c;
+    font-weight: 600;
+    font-family: "source_sans_proregular";
+}
+
+.timeline-card > .timeline-card-body {
+    position: absolute;
+    left: 20px;
+    top: 60px;
+    padding-left: 10px;
+    color: $color-grey-44;
+    font-family: "source_sans_proregular";
+}
+
+.timeline-card > .timeline-card-timestamp {
+    position: absolute;
+    left: 120px;
+    top: 5px;
+    padding-left: 10px;
+    color: $color-grey-77;
+    font-family: "source_sans_proregular";
+    font-size: 14px;
+}
+
+.timeline-card-bar {
+	height: $card-height;
+	width: 18px;
+	border: 1px solid $timeline-primary-color;
+	background-color: $timeline-primary-color;
+
+}
+
+.timeline-header {
+    padding-top: 12px;
+    height: 68px;	
+    width: 100%;	
+	border: 1px solid $timeline-primary-color;
+	background-color: $timeline-primary-color;
+}
+
+.timeline-header-text {
+	height: 36px;
+	width: 100%;
+	color: $color-white-ff;
+	font-family: "source_sans_proregular";
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 36px;
+    margin-top: 10px;
+}
+
+.timeline-line {
+    width: 3px;	
+    border: 1px 
+    solid $timeline-primary-color;
+}
+
+.timeline-back-btn {
+    color: $color-white-ff;
+    padding-left: 10px;
+    padding-right: 10px;
+}

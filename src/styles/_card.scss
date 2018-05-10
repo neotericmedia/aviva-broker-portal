@@ -1,0 +1,49 @@
+@import "variables";
+
+
+.card {
+  width: 100%;
+  height: 100%;
+  float: left;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  &.dark-cyan {
+    background-color: $color-card-cayn-dark;
+    border: 1px solid $color-card-cayn-dark-border;
+    color: $color-card-cayn-dark-text-color;
+  }
+  &.white {
+    background-color: $color-card-white;
+    border: 1px solid $color-card-white-border;
+    color: $color-card-white-text-color;
+  }
+  .title {
+    font-family: "source_sans_prosemibold";
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    margin-top: 25px;
+  }
+  .info {
+    &-title {
+      font-family: "source_sans_prolight";
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 28px;
+    }
+    &.bold {
+      font-family: "source_sans_prosemibold";
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 32px;
+    }
+    &.huge {
+      font-family: "source_sans_prosemibold";
+      font-size: 50px;
+      font-weight: bold;
+      line-height: 63px;
+    }
+  }
+}

@@ -1,0 +1,150 @@
+@import "variables";
+
+.button-group {
+  background-color: $color-grey-f9;
+  border: 1px solid $color-grey-aa;
+  border-radius: 4px;
+  box-shadow: $box-shadow;
+  display: inline-block;
+  font-family: source_sans_proregular;
+  &.btn-block {
+    display: flex;
+    height: 52px;
+    & > button {
+      flex: 1;
+    }
+  }
+
+  button {
+    background-color: $color-grey-f9;
+    position: relative;
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .selected {
+    border-left: 1px solid $color-green-4c;
+    border-right: 1px solid $color-green-4c;
+    margin-left: -1px;
+    margin-right: -1px;
+    border-radius: 4px;
+    background-color: $color-green-4c;
+    color: $color-white-ff;
+  }
+  
+  .unselected {
+    background-color: $color-grey-f9;
+    color: $color-grey-44;
+  }
+  
+  .divider-line {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 30px;
+    width: 1px;
+    background-color: $color-grey-aa;
+  }
+
+  .btn-padding-1 {
+    padding: 10px 30px;
+  }
+
+  .btn-padding-2 {
+    padding: 10px 120px;
+  }
+}
+
+.btn {
+  font-family: source_sans_prosemiregular, sans-serif;
+  &:hover {
+    .plus-icon-blue {
+      background-image: $plus-icon-white;
+    }
+  }
+  &.primary {
+    border: 1px solid $button-primary-active-border-color;
+    background-color: $button-primary-active-background-color;
+    border-radius: 2px;
+    padding: 16px 30px;
+    font-size: $font-sz-base;
+    font-family: "source_sans_prosemibold";
+    color: $button-primary-active-color;
+    &:hover {
+      background-color: $button-primary-hover-background-color;
+      color: $button-primary-hover-color;
+      border-color: $button-primary-hover-border-color;
+    }
+  }
+  &.secondary {
+    border: 1px solid $button-secondary-active-border-color;
+    background-color: $button-secondary-active-background-color;
+    border-radius: 2px;
+    padding: 16px 30px;
+    font-size: $font-sz-base;
+    font-family: "source_sans_prosemibold";
+    color: $button-secondary-active-color;
+    &:hover {
+      background-color: $button-secondary-hover-background-color;
+      color: $button-secondary-hover-color;
+      border-color: $button-secondary-hover-border-color;
+    }
+    &.reverse {
+      border-color: 1px solid $button-secondary-hover-border-color;
+      background-color: $button-secondary-hover-background-color;
+      color: $button-secondary-hover-color;
+      &:hover {
+        border: 1px solid $button-secondary-active-border-color;
+        background-color: $button-secondary-active-background-color;
+        color: $button-secondary-active-color;
+      }
+    }
+    &.btn-label {
+      height: 50px;
+      margin-top: 38px;
+      padding: 13px 30px;
+    }
+    &.btn-add {
+      padding: 13px 30px;
+
+    }
+  }
+}
+
+.btn-underline {
+  font-size: 16px;
+  color: $color-blue-4f;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid
+}
+
+.rectangle-btn {
+  height: 50px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;	
+  background-color: $color-green-4c;
+  color: $color-white-ff;
+  font-weight: bold;
+}
+
+.rectangle-lg-btn {
+  height: 68px;
+  width: 100%;
+  border: 1px solid $color-blue-4f;
+  border-radius: 5px;
+  background-color: $color-blue-4f;
+}
+
+button span.plus-icon-blue {
+  font-size: 18px;
+  font-weight: bold;
+}
+

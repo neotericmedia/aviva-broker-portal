@@ -1,0 +1,28 @@
+@import "../../../../styles/variables";
+
+.lob-subtitle {
+  height: 28px;
+  color: $color-grey-5c;
+  font-family: "source_sans_proregular";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  padding: 0 0 0 15px;
+}
+
+.lob-details-header {
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid $color-grey-cc;
+  overflow: hidden;
+}
+
+.lob-coverage-row-title {
+  margin-bottom: 5px;
+  height: 20px;
+}
+
+.lob-details-covform {
+  .covInput:last-child() {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,71 @@
+<form [formGroup]="quoteDatesForm" class="premium-box mr-b-20">
+  <div class="premium-box-header font-style-1 font-regular">{{ 'generic.premiumDetails.headTitle' | translate }}</div>
+  <table>
+    <tr>
+      <td width="50%" class="lineMe">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light">{{ 'generic.premiumDetails.title.annualPremium' | translate }}</div>
+            <div class="font-style-5 font-bold">{{ data.deviatedPremium | myRoundPipe | myNumberFormatter:'currency' }}</div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light mr-b-10">{{ 'generic.premiumDetails.title.quoteNumber' | translate }}</div>
+            <div class="font-style-3 font-bold">{{ data.quoteNumber }}</div>
+          </div>
+        </div>
+        <div class="divider-hr"></div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light mr-b-10">{{ 'generic.premiumDetails.title.deviation' | translate }}</div>
+            <div class="font-style-3 font-bold">{{ data.deviation | myNumberFormatter:'percent' }}</div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light mr-b-10">{{ 'generic.premiumDetails.title.commission' | translate }}</div>
+            <div class="font-style-3 font-bold">{{ data.deviation | myNumberFormatter:'percent' }}</div>
+          </div>
+        </div>
+        <div class="divider-hr"></div>
+        <div class="row pad-b-10">
+          <!-- Effective Date -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light mr-b-10">{{ 'generic.premiumDetails.title.effectiveDate' | translate }}</div>
+            <div class="has-feedback"></div>
+            <div class="font-style-3 font-bold">{{ formatDate(initEffectiveDate) }}</div>
+          </div>
+          <!-- Expiry Date -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="font-style-2 font-light mr-b-10">{{ 'generic.premiumDetails.title.expiryDate' | translate }}</div>
+            <div class="font-style-3 font-bold">{{ formatDate(quoteDatesForm.value.expiryDt) }}</div>
+          </div>
+        </div>
+      </td>
+
+      <!-- Business Info -->
+      <td width="50%" valign="top">
+        <div class="row">
+          <!-- Name/Address -->
+          <div class="col-xs-12">
+            <div class="font-style-2 font-light pad-b-10">{{ businessInfoData.firstTitle | translate }}</div>
+            <div class="font-style-3 font-bold pad-b-20">{{ businessInfoData.firstContent | translate }}</div>
+          </div>
+        </div>
+        <div class="divider-hr"></div>
+        <!-- Description -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="font-style-2 font-light mr-b-10">{{ businessInfoData.secondTitle | translate }}</div>
+            <div class="font-style-3 font-bold">{{ businessInfoData.secondContent | translate }}</div>
+          </div>
+        </div>
+        <div class="divider-hr"></div>
+        <!-- Industry Code -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="font-style-2 font-light mr-b-10">{{ businessInfoData.thirdTitle | translate }}</div>
+            <div class="font-style-3 font-bold">{{ businessInfoData.thirdContent | translate }}</div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>

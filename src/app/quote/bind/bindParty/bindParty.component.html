@@ -1,0 +1,77 @@
+<accordion-group #group [isOpen]=true [title]="title">
+  <!-- Accordion heading -->
+  <div accordion-heading>
+    <div class="row accordion-heading">
+      <div class="col-xs-9 col-sm-10 pad-0">
+        <span class="icon-bindForm icon-left icon-height-37"></span>
+        <span>{{ getTitle() }}</span>
+      </div>
+      <div class="col-xs-3 col-sm-2 pad-l-0 text-right">
+        <span class="icon-delete mr-r-15" [ngClass]="{'hide': group.isOpen, 'present': !group.isOpen}" (click)="deleteControl($event)"></span>
+        <span class="icon-arrow" [ngClass]="{'up': group.isOpen, 'down': !group.isOpen}"></span>
+      </div>
+    </div>
+  </div>
+  <!-- Accordion content -->
+  <div class="pad-lr-80 accordion-section-content">
+    <div [formGroup]="bindParty" novalidate>
+      <!-- Name -->
+      <div class="pad-tb-20">
+        <label for="bindName" class="input-field-title">{{ 'bind.name' | translate }}</label>
+        <div class="row">
+          <div class="col-xs-12">
+            <input id="bindName" class="form-control input-field-content"
+              formControlName="bindName" maxlength="50" spellcheck="false">
+          </div>
+        </div>
+        <div *ngIf="showErrors">
+          <div *ngIf="bindParty.controls.bindName.invalid" class="alert alert-danger">
+            {{ 'generic.required' | translate }}
+          </div>
+        </div>
+      </div>
+      <!-- Type (Loss Payee/1st mortgagee/2nd mortgagee)-->
+      <div *ngIf="bindParty.controls.bindType" class="pad-b-20">
+        <label for="bindType" class="input-field-title">{{ 'bind.type' | translate }}</label>
+        <select id="bindType" class="form-control input-field-content" name="bindType" formControlName="bindType"
+          (focus)="bindService.cacheTypeId($event.target.value)" (change)="bindService.updateMortgageeOption($event)">
+          <option *ngIf="!bindParty.value.bindType" disabled selected value=null>{{ 'form.dropdown.select' | translate }}</option>
+          <option *ngFor="let opt of bindService.bindTypeArray" [value]="opt.id" [disabled]="opt.selected"
+            [selected]="bindParty.value.bindType === opt.id">
+            {{ opt.Locale.Description }}
+          </option>
+        </select>
+        <div *ngIf="showErrors">
+            <div *ngIf="bindParty.controls.bindType.invalid" class="alert alert-danger">
+              {{ 'generic.required' | translate }}
+            </div>
+          </div>
+      </div>
+      <!-- Address -->
+      <address [parentForm]="bindParty" [showErrors]="showErrors" [savedAddress]="savedAddress"></address>
+      <!-- Add Button -->
+      <div *ngIf="isLastControl()" class="add-dropdown">
+        <button class="rectangle-arrow-btn" (click)="toggleAddDropdown()">
+          <span>{{ 'buttons.add' | translate }}</span>
+          <span>
+            <i class="fa fa-2x fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+        <div *ngIf="showAddDropdown">
+          <button class="option" (click)="addAnother()">
+            <span>{{ 'bind.buttons.addAnother' | translate }}</span>
+            <span class="float-right">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
+          </button>
+          <button class="option" (click)="closeDropdown()">
+            <span>{{ 'bind.buttons.close' | translate }}</span>
+            <span class="float-right">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</accordion-group>

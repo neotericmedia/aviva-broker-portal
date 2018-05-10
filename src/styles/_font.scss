@@ -1,0 +1,55 @@
+@import "variables";
+
+.font-style-1 {
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.font-style-2 {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.font-style-3 {
+  font-size: 23px;
+  line-height: 29px;
+}
+
+.font-style-4 {
+  font-size: 25px;
+  line-height: 32px;
+}
+
+.font-style-5 {
+  font-size: 50px;
+  line-height: 60px;
+}
+
+.font-light {
+  font-family: "source_sans_prolight";  
+}
+
+.font-regular {
+  font-family: "source_sans_proregular";  
+}
+
+.font-bold {
+  font-family: "source_sans_proregular";
+  font-weight: bold;
+}
+
+.font-white {
+  color: $color-white-ff;
+}
+
+.font-black {
+  color: $color-black;
+}
+
+.font-grey {
+  color: $color-grey-5c;
+}
+
+.font-blue {
+  color: $color-blue-4f;
+}

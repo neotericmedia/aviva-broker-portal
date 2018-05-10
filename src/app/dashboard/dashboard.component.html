@@ -1,0 +1,95 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<!-- Dashboard  Form -->
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <div class="row mr-tb-20">
+      <!-- Industry Distribution -->
+      <div class="col-md-6">
+        <div class="panel">
+          <div class="panel-title">
+            <h4>{{ 'dashboard.industryCodes.title' | translate }}</h4>
+            <h5>{{ 'dashboard.industryCodes.summary' | translate }}</h5>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-md-7">
+              <div class="mr-tb-20 pad-lr-15 table_container">
+                <div *ngFor="let item of industryCode" class="table_row">
+                  <h6 class="table_left pad-r-15">{{item.name}}</h6>
+                  <h6 class="table_right table_percentage">{{item.ratio}}</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-5">
+              <pie-chart class="pie-chart-dimension" *ngIf="industryCode" [rawData]="industryCode" [showDoughnutType]=true></pie-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quote Status -->
+      <div class="col-md-6">
+        <div class="panel">
+          <div class="panel-title">
+            <h4>{{ 'dashboard.quoteStatus.title' | translate }}</h4>
+            <h5>{{ 'dashboard.quoteStatus.summary' | translate }}</h5>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="mr-tb-20 pad-lr-15 table_container">
+                <div *ngFor="let item of quoteStatus" class="table_row">
+                  <h5 class="table_left">{{item.name}}</h5>
+                  <h5 class="table_right">{{item.count}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-7 col-md-offset-0 col-md-8">
+              <bar-chart class="bar-chart-dimension" *ngIf="quoteStatus" [rawData]="quoteStatus" [xAxisLabel]="'dashboard.quoteStatus.xAxisLabel' | translate"
+                [yAxisLabel]="'dashboard.quoteStatus.yAxisLabel' | translate">
+              </bar-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Broker Codes Distribution -->
+      <div class="col-md-6">
+        <div class="panel">
+          <div class="panel-title">
+            <h4>{{ 'dashboard.brokerCodes.title' | translate }}</h4>
+            <h5>{{ 'dashboard.brokerCodes.summary' | translate }}</h5>
+          </div>
+          <div class="mr-tb-20 pad-lr-15 table_container">
+            <div *ngFor="let item of brokerCode" class="table_row">
+              <h6 class="table_left pad-r-15">{{item.name}}</h6>
+              <h6 class="table_right table_percentage">{{item.count}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Latest Quotes of the signed in user -->
+      <div class="col-md-6">
+        <div class="panel">
+          <div class="panel-title">
+            <h4>{{ 'dashboard.latestQuotes.title' | translate }}</h4>
+            <h5>{{ 'dashboard.latestQuotes.summary' | translate }}</h5>
+          </div>
+          <div class="mr-tb-20 pad-lr-15 table_container">
+            <div class="table_head">
+              <h6 class="table_cell">{{ 'dashboard.latestQuotes.columns.quoteNumber' | translate }}</h6>
+              <h6 class="table_cell">{{ 'dashboard.latestQuotes.columns.status' | translate }}</h6>
+              <h6 class="table_cell">{{ 'dashboard.latestQuotes.columns.brokerCode' | translate }}</h6>
+              <h6 class="table_cell">{{ 'dashboard.latestQuotes.columns.nameInsured' | translate }}</h6>
+              <h6 class="table_cell">{{ 'dashboard.latestQuotes.columns.createdDate' | translate }}</h6>
+            </div>
+            <div *ngFor="let item of latestQuotes" class="table_row">
+              <h6 class="table_cell">{{ item._id }}</h6>
+              <h6 class="table_cell">{{ item.status.Locale.Description }}</h6>
+              <h6 class="table_cell">{{ item.brokerCode }}</h6>
+              <h6 class="table_cell">{{ item.namedInsured }}</h6>
+              <h6 class="table_cell">{{ item.createdDate | date: 'shortDate' }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

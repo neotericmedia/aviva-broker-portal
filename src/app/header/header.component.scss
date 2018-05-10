@@ -1,0 +1,56 @@
+/* Header Component */
+@import "../../styles/quoter";
+
+header.header-resp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  .navbar.navbar-default .navbar-header .navbar-header-logo:first-child {
+    cursor: auto;
+  }
+}
+
+.header-resp .navbar.navbar-default .navbar-header .navbar-header-logo {
+  background-size: 100% auto;  
+}
+
+.header-title {	
+  height: 65px;
+  min-width: 105px;
+  color: #004FB6;
+  font-family: "source_sans_probold";	
+  font-size: 16px;
+  text-align: center;
+  background-color: transparent;
+  margin-left: 15px;
+
+  i, span {
+    vertical-align: middle;
+  }
+}
+
+.header-btn {
+  position: relative;
+  height: 100%;
+  width: auto;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+
+  .underline {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border-bottom: 4px solid #004FB6;
+  }
+}
+
+.logout {
+  background-color: #FFD900;
+  cursor: pointer;
+}

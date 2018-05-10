@@ -1,0 +1,114 @@
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Search column -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="row pad-t-15">
+            <label class="input-field-title">
+              <span class="label-text title-text">{{ 'industrycodesearch.page.title1' | translate }}
+              </span>
+            </label>
+          </div>
+          <div class="row">
+            <label class="input-field-title">
+              <span class="label-text subtitle-text">{{ 'industrycodesearch.page.title2' | translate }}
+              </span>
+            </label>
+          </div>
+
+          <!-- Industry Code search -->
+          <div class="row pad-t-15">
+            <label class="input-field-title">
+              <span class="label-text">{{ 'industrycodesearch.searchTitle' | translate }}</span>
+            </label>
+            <div class="col-lg-12 pad-b-10 selected-text" *ngIf="showPolicyRestrictions">
+              <div class="row col-lg-11">
+                <div class="search-result-heading-sm">{{selectedIndustryCodeDescription}}</div>
+                <div class="search-result-heading-lg">{{selectedIndustryCodeKeyword}} </div>
+              </div>
+              <div class="row col-lg-1" (click)="hidePolicyRestrictions()">
+                <a class="questionIcon">
+                  <i class="fa fa-times-circle-o col-md-2 fa-2x"></i>
+                </a>
+              </div>
+            </div>
+            <ng-template #customItemTemplate let-model="item" let-index="index">
+              <div class="search-result-heading-sm">{{model.Locale.Description | json}}</div>
+              <div class="search-result-heading-lg">{{model.Keywords.en | json}} </div>
+            </ng-template>
+            <div class="ngx-completer-container industry-info" *ngIf="!showPolicyRestrictions">
+              <input id="industryInfo" [(ngModel)]="industryInfoText" [typeahead]="keywordSearchDS" typeaheadMinLength="1" [typeaheadItemTemplate]="customItemTemplate"
+                placeholder="{{ 'industrycodesearch.placeholder' | translate }}" typeaheadOptionField="title" typeaheadWaitMs="300"
+                (typeaheadOnSelect)="updateIndustryCode($event)" typeaheadPhraseDelimiters=" " class="form-control ngx-completer">
+            </div>
+            <div class="ngx-completer-notifier-container">
+              <div *ngIf="industryInfoLoading === true" class="ngx-completer-notifier">
+                {{ 'loading' | translate }}
+              </div>
+              <div *ngIf="industryInfoNoMatch === true" class="ngx-completer-notifier">
+                {{ 'noResultsFound' | translate }}
+              </div>
+            </div>
+          </div>
+          <!-- End of Industry Code search -->
+          <!-- IndustryCode conditions -->
+          <div *ngIf="showPolicyRestrictions restrictions-frame">
+            <div class="row restrictions pad-tb-5">
+              <label class="input-field-title">
+                <span class="restrictions-text">{{ 'industrycodesearch.policyRestrictions' | translate }}</span>
+              </label>
+            </div>
+            <div class="row" *ngFor="let industryCodeCondition of getIndustryCodeCondition()">
+              <a class="questionIcon" href="">
+                <i class="fa fa-times col-md-2 fa-2x"></i>
+              </a>
+              <label class="input-field-title">
+                <span class="restrictions-text">{{ industryCodeCondition.Locale.Description }}</span>
+              </label>
+              <div class="row restrictions-divider">
+              </div>
+            </div>
+          </div>
+          <!-- Start Quote Button -->
+          <div class="pad-tb-20" *ngIf="showPolicyRestrictions">
+            <div class="text-right">
+              <button class="btn secondary" type="submit" (click)="startQuote()">{{ 'industrycodesearch.startQuote' | translate }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- End of Search column -->
+        <div class="col-xs-12 col-sm-3"></div>
+        <!-- Right column -->
+        <div class="col-xs-12 col-sm-3 pad-t-15 pad-lr-0">
+          <div class="pad-t-20 pad-b-15 right-box">
+            <div>
+              <label class="input-field-title">
+                <span class="right-column-title">{{ 'industrycodesearch.quoteExists' | translate }}</span>
+              </label>
+            </div>
+            <div class="pad-tb-15">
+              <button class="btn secondary click-btn" type="submit" (click)="startQuote()">{{ 'industrycodesearch.quoteExistsBtn' | translate }}</button>
+            </div>
+          </div>
+          <!-- End of box -->
+          <!-- Call now Box -->
+          <div class="pad-tb-10"></div>
+          <div class="pad-tb-20 right-box-align-left">
+            <div>
+              <label class="input-field-title">
+                <span class="contact-us-text">{{ 'industrycodesearch.contactUs' | translate }}</span>
+              </label>
+              <label class="input-field-title">
+                <span class="contact-us-phone">{{ 'industrycodesearch.contactPhoneNumber' | translate }}</span>
+              </label>
+              <p class="contact-us-description">{{ 'industrycodesearch.contactUsDescription' | translate}}</p>
+            </div>
+          </div>
+          <!-- End of box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<modal #myModal [displayHeader]=false [ignoreBackdropClick]=true size="sm">
+  <div class="modal-body-content">
+    <span class="guard-message">{{message}}</span>
+  </div>
+  <div class="modal-footer-content row">
+    <button class="btn secondary reverse pull-left" type="submit" (click)="confirm()">{{confirmTitle}}</button>
+    <button class="btn secondary pull-right" type="submit" (click)="decline()">{{declineTitle}}</button>
+  </div>
+</modal>

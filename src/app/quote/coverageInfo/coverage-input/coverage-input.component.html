@@ -1,0 +1,90 @@
+<div *ngIf="!isCoverageProhibited" class="covInput">
+  <div class="col-sm-5" [tooltip]="getInfo()">
+    <div *ngIf="hasLabel" class="lob-coverage-row-title"></div>
+    <button type="button" id="{{formNumber}}-{{coverageSequence}}-btn" class="coverageButton"
+      (click)="onSelect()" [disabled]="isMandatory || isTitle || myFormControl.disabled"
+      [ngClass]="{
+        'cvg-btn-selected': innerValue.selected && !isMandatory && !isTitle,
+        'cvg-btn-unselected': myFormControl.enabled && !innerValue.selected && !isTitle,
+        'cvg-btn-mandatory': isMandatory,
+        'cvg-btn-disabled': myFormControl.disabled || isTitle}">
+      <span class="checkbox-common"><i></i></span>
+      <span class="checkbox-title-common">
+        {{cvg.Locale.Title}}
+        <i *ngIf="myFormControl.disabled || isTitle" class="fa fa-info-circle pad-l-5"></i>
+      </span>
+    </button>
+    <div *ngIf="relationshipErrorMsg" class="alert alert-danger">
+      {{ relationshipErrorMsg }}
+    </div>
+  </div>
+  <div [formGroup]="covInputForm" class="col-sm-7">
+    <div class="row">
+      <div class="col-sm-6">
+        <div *ngIf="hasLabel" class="lob-coverage-row-title"></div>
+        <div *ngIf="cvg.LimitType === 'DL' && cvg.LimitEnum">
+          <input-envelope>
+            <select id="coverage-{{cvg.id}}-limit" class="form-control input-field-content input-envelope-content" formControlName="limit"
+              (change)="onUpdateLimit()">
+              <option disabled [selected]="isLimitEmptyOptionSelected()">{{ 'form.dropdown.select' | translate }}</option>
+              <option *ngFor="let opt of cvg.LimitEnum.EnumValueList" [value]="opt" [selected]="isLimitOptionSelected(opt)">
+                {{ opt | myNumberFormatter:'currency' }}
+              </option>
+            </select>
+          </input-envelope>
+          <div *ngIf="innerValue.selected && !limitControl.valid" class="alert alert-danger">
+            {{ 'lobCoverage.coverage.errors.required' | translate }}
+          </div>
+        </div>
+        <div *ngIf="cvg.LimitType === 'FF'">
+          <number-input type="currency" id="coverage-{{cvg.id}}-limit" formControlName="limit" placeholderKey="form.input.placeholder"
+            (change)="onUpdateLimit(cvg)" [disabled]="!innerValue.selected ? true : null">
+          </number-input>
+          <div *ngIf="innerValue.selected && limitControl.errors" class="alert alert-danger">
+            <div *ngFor="let err of objectKeys(limitControl.errors)">
+              <span>{{ 'lobCoverage.coverage.errors.' + err | translate }}</span>
+              <span>{{ limitControl.errors[err] | myNumberFormatter:'currency' }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="cvg.zoneValue">
+          <div>
+            <input type="text" id="coverage-{{cvg.id}}-zone" class="form-control input-field-content" disabled value="{{'lobCoverage.coverage.zone.title' | translate }}&nbsp;{{ 'lobCoverage.coverage.zone.range.' + cvg.zoneValue | translate}}">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="hasDeductible" [ngClass]="{'col-sm-6': !hasTwoDeductibles, 'col-sm-3': hasTwoDeductibles}">
+        <label *ngIf="hasLabel && hasTwoDeductibles" class="lob-coverage-row-title input-field-title input-field-title-light" for="coverage-{{cvg.id}}-deductible1">{{ propertyDamageLabel }}</label>
+        <input-envelope>
+          <select id="coverage-{{cvg.id}}-deductible1" name="coverage-{{cvg.id}}-deductible1" class="form-control input-field-content input-envelope-content"
+            formControlName="deductible1" (change)="onUpdateDeductible1($event.target.value)">
+            <option disabled [selected]="isDeductible1EmptyOptionSelected()">
+              {{ 'form.dropdown.select' | translate }}
+            </option>
+            <option *ngFor="let opt of cvg.Deductible1Enum.EnumValueList" [value]="opt" [selected]="isDeductible1OptionSelected(opt)">
+              {{ opt | myNumberFormatter:getDeductibleValueFormat(cvg.Deductible1Enum.EnumFormat) }}
+            </option>
+          </select>
+        </input-envelope>
+        <div *ngIf="innerValue.selected && !deductible1Control.valid" class="alert alert-danger">
+          {{ 'lobCoverage.coverage.errors.required' | translate }}
+        </div>
+      </div>
+      <div *ngIf="hasTwoDeductibles" class="col-sm-3">
+        <label *ngIf="hasLabel" class="lob-coverage-row-title input-field-title input-field-title-light" for="coverage-{{cvg.id}}-deductible2">{{ bodilyInjuryLabel }}</label>
+        <input-envelope>
+          <select id="coverage-{{cvg.id}}-deductible2" class="form-control input-field-content input-envelope-content" formControlName="deductible2"
+            (change)="onUpdateDeductible2($event.target.value)">
+            <option disabled [selected]="isDeductible2EmptyOptionSelected()">{{ 'form.dropdown.select' | translate }}</option>
+            <option *ngFor="let opt of cvg.Deductible2Enum.EnumValueList" [value]="opt" [selected]="isDeductible2OptionSelected(opt)">
+              {{ opt | myNumberFormatter:getDeductibleValueFormat(cvg.Deductible2Enum.EnumFormat) }}
+            </option>
+          </select>
+        </input-envelope>
+        <div *ngIf="innerValue.selected && !deductible2Control.valid" class="alert alert-danger">
+          {{ 'lobCoverage.coverage.errors.required' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

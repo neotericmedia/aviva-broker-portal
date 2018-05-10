@@ -1,0 +1,84 @@
+$image-path: "../../images";
+$local-image-path: "../app/images";
+$fonts-path: "../../fonts";
+
+$color-grey-44: #444444;
+$color-grey-77: #777777;
+$color-grey-aa: #aaaaaa;
+$color-grey-cc: #cccccc;
+$color-grey-ce: #cecece;
+$color-grey-ee: #eeeeee;
+$color-grey-4a: #4a4a4a;
+$color-grey-57: #575962;
+$color-grey-5c: #5C596D;
+$color-grey-5e: #5E5B6F;
+$color-grey-9b: #9b9b9b;
+$color-grey-97: #979797;
+$color-grey-a6: #a6a7c1;
+$color-grey-de: #dee4e8;
+$color-grey-e5: #e5edf8;
+$color-grey-f9: #f9f9f9;
+$color-cyan-9a: #009AB1;
+$color-white-ff: #FFFFFF;
+$color-blue-4f: #004FB6;
+$color-blue-00: #009AB1;
+$color-blue-e5: #E5EDF8;
+$color-purple-71: #716aca;
+$color-red-b9: #b91a03;
+$color-green-4c: #4CA02B;
+$color-black: #000000;
+
+$nav-button-color: #00838F;
+$primary-color-1: #1F50AF;
+$primary-color-2: #FFD900;
+
+$color-card-cayn-dark: $color-cyan-9a;
+$color-card-cayn-dark-border: #7BAAE6;
+$color-card-cayn-dark-text-color: $color-white-ff;
+
+$color-card-white: $color-white-ff;
+$color-card-white-border: #87378E;
+$color-card-white-text-color: $color-grey-5c;
+
+$color-table-heading: $color-grey-5c;
+$color-table-row: $color-grey-44;
+
+$font-sz-base: 16px;
+$font-sz-large: 28px;
+
+$button-primary-active-color: $color-blue-4f;
+$button-primary-active-background-color: $primary-color-2;
+$button-primary-active-border-color: $primary-color-2;
+$button-primary-hover-color: $color-white-ff;
+$button-primary-hover-background-color: $color-blue-4f;
+$button-primary-hover-border-color: $color-blue-4f;
+
+$button-secondary-active-color: $color-white-ff;
+$button-secondary-active-background-color: $color-blue-4f;
+$button-secondary-active-border-color: $color-blue-4f;
+$button-secondary-hover-color: $color-blue-4f;
+$button-secondary-hover-background-color: $color-white-ff;
+$button-secondary-hover-border-color: $color-blue-4f;
+
+$input-border-radius: 4px;
+$input-height: 50px;
+$input-color: $color-grey-44;
+$input-border-color: $color-grey-aa;
+
+$box-shadow: 0 1px 2px 0 rgba(204,204,204,0.5);
+
+$card-height: 126px;
+$timeline-primary-color: $color-blue-00;
+$sidebar-background-color: #E9EBF0;
+
+//Image Icons
+$arrow-down-blue: url("#{$local-image-path}/catalyst-icons/arrow_blue.png");
+$arrow-up-grey: url("#{$local-image-path}/catalyst-icons/arrow_grey.png");
+$info-icon: url("#{$local-image-path}/catalyst-icons/info.png");
+$profile-icon: url("#{$local-image-path}/catalyst-icons/profile.png");
+$calendar-icon: url("#{$local-image-path}/catalyst-icons/calendar.png");
+$close-icon: url("#{$local-image-path}/catalyst-icons/close.png");
+$close-grey-icon: url("#{$local-image-path}/catalyst-icons/close_grey.png");
+$information-icon: url("#{$local-image-path}/catalyst-icons/information-icon.svg");
+$plus-icon-blue: url("#{$local-image-path}/catalyst-icons/plus-blue.svg");
+$plus-icon-white: url("#{$local-image-path}/catalyst-icons/plus-white.svg");

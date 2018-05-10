@@ -1,0 +1,11 @@
+<form *ngIf="isReady" novalidate [formGroup]="lobDetailsForm" class="lob-details-covform">
+  <div class="lob-details-header">
+    <div class="col-sm-offset-5 col-sm-7">
+      <div class="col-sm-6 lob-subtitle" *ngIf="showLimitHeader">{{'lobCoverage.coverage.title.property.limit' | translate}}</div>
+      <div class="col-sm-6 lob-subtitle" *ngIf="showDeductibleHeader" [ngClass]="{'col-sm-offset-6': !showLimitHeader}">
+        {{'lobCoverage.coverage.title.property.deductible' | translate}}
+      </div>
+    </div>
+  </div>
+  <coverage-input *ngFor="let cvg of lobCoverages" [cvg]="cvg" [formControlName]="getPseudoId(cvg)" [myFormControl]="formControlHash[getPseudoId(cvg)]"></coverage-input>
+</form>

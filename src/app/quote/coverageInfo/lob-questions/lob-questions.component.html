@@ -1,0 +1,39 @@
+<form novalidate [formGroup]="lobQuestionsForm" class="form-group" (ngSubmit)="onSubmit()">
+  <div *ngFor="let section of lobSubsections; let i = index">
+    <div *ngIf="i > 0 && section.title" class="form-header font-style-1">
+      {{ section.title | translate }}
+    </div>
+    <div *ngFor="let question of section.questions; let i = index">
+      <!-- Each Question -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 pad-tb-15">
+          <label [for]="question.ID" class="input-field-title">{{ question.Locale.FormField }}</label>
+          <number-input *ngIf="isFormFreeForm(question.FormType) && !!getNumberInputFormat(question.AnswerType)"
+            [type]="getNumberInputFormat(question.AnswerType)" [id]="question.ID" [formControlName]="question.ID"
+            [name]="question.ID"></number-input>
+          <input-envelope *ngIf="isFormFreeForm(question.FormType) && !!!getNumberInputFormat(question.AnswerType)"
+            [type]="getNumberInputFormat(question.AnswerType)">
+            <input disable-mouse-wheel [type]="getInputType(question.AnswerType)" [id]="question.ID"
+              class="form-control input-field-content input-envelope-content" maxlength="50" spellcheck="false"
+              [name]="question.ID" [formControlName]="question.ID" min="0">
+          </input-envelope>
+          <form-dropdown *ngIf="isFormDropdown(question.FormType)" [name]="question.ID" [id]="question.ID"
+            [formControlName]="question.ID" [options]="question.answerOptions"></form-dropdown>
+          <div *ngIf="showErrors">
+            <div *ngIf="!lobQuestionsForm || !lobQuestionsForm.value[question.ID]" class="alert alert-danger">
+              {{ 'lobCoverage.lobQuestions.errors.answer.required' | translate }}
+            </div>
+            <!-- This is only for Year Built field; would need work if same length validation needs to be done for other fields -->
+            <div *ngIf="lobQuestionsForm.controls[question.ID].hasError('maxlength') ||
+              lobQuestionsForm.controls[question.ID].hasError('minlength')" class="alert alert-danger">
+              {{ 'lobCoverage.lobQuestions.errors.answer.yearBuiltLength' | translate }}
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div *ngIf="i !== section.questions.length - 1" class="divider-hr"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

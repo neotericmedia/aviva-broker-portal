@@ -1,0 +1,76 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <payee-mortgagee-modal #payeeMortgageeModal></payee-mortgagee-modal>
+    <!-- Confirmation dialog -->
+    <confirm-modal #guardModal
+			message="{{ guardModalQuestion }}"
+			confirmTitle="{{ 'yes' | translate }}"
+			declineTitle="{{ 'cancel' | translate }}"></confirm-modal>
+    <!-- Quote Breadcrumb -->
+    <quote-breadcrumb step="bindInfo" [qNumber]="quoteNumber"></quote-breadcrumb>
+    <!-- Premium Details -->
+    <premium-details *ngIf="premiumInfoCard"
+      [parentForm]="bindForm"
+      [data]="premiumInfoCard"
+      [businessInfoData]="businessInfoCard">
+    </premium-details>
+    <div class="row">
+      <!-- Broker Details -->
+      <info-card *ngIf="brokerInfoCard && isUWJourney" class="col-sm-6 mr-b-20" [data]="brokerInfoCard"></info-card>
+    </div>
+
+    <!-- Loss Payee/Mortgage -->
+    <div class="form-header font-style-1">{{ 'bind.payeeMortgagee' | translate }}</div>
+
+    <!-- Loss Payee/Mortgagee forms -->
+    <form *ngIf="showBindParty" novalidate [formGroup]="bindForm" class="content-wrap">
+      <accordion>
+        <bindParty *ngFor="let bindParty of bindForm.get('bindPartyArray').controls"
+          [bindParty]="bindParty" [parentForm]="bindForm.controls.bindPartyArray"
+          [showErrors]="showErrors" (formIdEmitter)="deleteBindParty($event)"></bindParty>
+      </accordion>
+    </form>
+
+    <!-- Add Payee Button -->
+    <div class="row pad-tb-15">
+      <div class="col-xs-6">
+        <button class="btn btn-add secondary reverse" (click)="addPayeeMortgagee()">
+          <span class="plus-icon-blue">{{ 'bind.addPayeeMortgagee' | translate }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Payment Information -->
+    <div class="form-header font-style-1">{{ 'bind.paymentInformation' | translate }}</div>
+    <div class="row pad-tb-15">
+      <div class="col-xs-6">
+        <label for="businessType" class="input-field-title">{{ 'bind.paymentSetup' | translate }}</label>
+        <div class="button-group btn-block">
+          <button (click)="onSelectAgencyBill(true)"
+            [ngClass]="{'selected': agencyBillSelected, 'unselected': !agencyBillSelected}">
+            <span>{{ 'bind.agencyBill' | translate }}</span>
+          </button>
+          <button (click)="onSelectAgencyBill(false)"
+            [ngClass]="{'selected': !agencyBillSelected, 'unselected': agencyBillSelected}">
+            <span>{{ 'bind.directBill' | translate }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row action-buttons-group">
+      <div class="col-xs-4 text-left">
+        <button class="btn secondary" type="button" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+      </div>
+      <div class="col-xs-4 text-center">
+        <button class="btn secondary reverse" type="button" (click)="onUnbind()">{{ 'buttons.cancelBind' | translate }}</button>
+      </div>
+      <div class="col-xs-4 text-right">
+        <button class="btn secondary" type="button" (click)="onIssue()">{{ 'buttons.issuePolicy' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

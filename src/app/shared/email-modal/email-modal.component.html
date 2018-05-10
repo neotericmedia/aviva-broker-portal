@@ -1,0 +1,58 @@
+<modal #sendEmailModal title="{{ 'summary.sendPdf.title.reviewemail' | translate }}" size="lg">
+  <div class="modal-body-content">
+    <div novalidate [formGroup]="emailInfoForm" class="form-group pad-r-15" (ngSubmit)="send($event)">
+      <div class="row pad-tb-20">
+        <!-- Subject -->
+        <div class="col-xs-12 col-sm-12">
+          <label for="recipient">{{ 'summary.sendPdf.title.subject' | translate }}</label>
+          <input id="subject" type="text" class="form-control" formControlName="subject" placeholder="{{ 'summary.sendPdf.placeholder.subject' | translate }}">
+          <div *ngIf="!emailInfoForm.value.subject" class="alert alert-danger">
+            {{ 'summary.sendPdf.errors.subject.required' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="row pad-tb-20">
+        <!-- Sender -->
+        <div class="col-xs-12 col-sm-12">
+          <label for="sender">{{ 'summary.sendPdf.title.sender' | translate }}</label>
+          <input id="sender" type="text" class="form-control" formControlName="sender"
+            placeholder="{{ 'summary.sendPdf.placeholder.sender' | translate }}">
+          <div *ngIf="!emailInfoForm.value.sender || emailInfoForm.hasError('invalidEmail', 'sender')" class="alert alert-danger">
+            {{ 'invalidEmail' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="row pad-tb-20">
+        <!-- Recipient -->
+        <div class="col-xs-12 col-sm-12">
+          <label for="recipient">{{ 'summary.sendPdf.title.recipient' | translate }}</label>
+          <input id="recipient" type="text" class="form-control" formControlName="recipient"
+            placeholder="{{ 'summary.sendPdf.placeholder.recipient' | translate }}">
+          <div *ngIf="!emailInfoForm.value.recipient || emailInfoForm.hasError('invalidEmail', 'recipient')" class="alert alert-danger">
+              {{ 'invalidEmail' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="row pad-tb-20">
+        <!-- Message -->
+        <div class="col-xs-12 col-sm-12">
+          <label for="message">{{ 'summary.sendPdf.title.message' | translate }}</label>
+          <textarea id="message" type="text" class="form-control" formControlName="message" rows="5"
+            placeholder="{{ 'summary.sendPdf.placeholder.message' | translate }}"></textarea>
+          <div *ngIf="!emailInfoForm.value.message" class="alert alert-danger">
+            {{ 'summary.sendPdf.errors.message.required' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Acton Buttons -->
+  <div class="modal-footer-content row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="pull-right">
+        <button class="btn secondary" [ngClass]="{'disabledButton': emailInfoForm.invalid}" type="submit" [disabled]="emailInfoForm.invalid"
+          (click)="send($event)">{{sendButtonTitle}}</button>
+      </div>
+    </div>
+  </div>
+</modal>

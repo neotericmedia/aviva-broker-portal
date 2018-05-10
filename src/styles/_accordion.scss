@@ -1,0 +1,190 @@
+@import "variables";
+@import "mixins";
+
+$local-image-path: "../app/images";
+
+.icon-left {
+  position: absolute;
+  top: 0;
+  left: -40px; 
+}
+
+.icon-bindForm {
+  background: transparent url("#{$local-image-path}/catalyst-icons/payee_mortgagee.png") no-repeat left;
+}
+
+accordion{
+  accordion-group{
+    &.panel-open{
+      // icon on open state
+      &.icon-pr {
+        .panel-heading {
+          @include background-image("#{$local-image-path}/icon_home_insurance_functional.png", no-repeat, 20px center, auto);
+        }
+      }
+      &.icon-im {
+        .panel-heading {
+          @include background-image("#{$local-image-path}/icon_response_functional.png", no-repeat, 20px center, auto);
+        }
+      }
+      &.icon-gl {
+        .panel-heading {
+          @include background-image("#{$local-image-path}/icon_life_insurance_functional.png", no-repeat, 20px center, auto);
+        }
+      }
+    }
+
+    // icon on close state
+    &.icon-pr {
+      .panel-heading {
+        @include background-image("#{$local-image-path}/icon_home_insurance_functional.png", no-repeat, 20px center, auto);
+      }
+    }
+    &.icon-im {
+      .panel-heading {
+        @include background-image("#{$local-image-path}/icon_response_functional.png", no-repeat, 20px center, auto);
+      }
+    }
+    &.icon-gl {
+      .panel-heading {
+        @include background-image("#{$local-image-path}/icon_life_insurance_functional.png", no-repeat, 20px center, auto);
+      }
+    }
+
+    &.ac-table {
+      .panel-default {
+        .panel-collapse {
+          & > .panel-body {
+             padding: 0px;
+          }
+        }
+      }
+      .accordion-body {
+        table {
+          &.table {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            thead {
+              tr {
+                th {
+                  &:first-child {
+                    padding-left: 80px;
+                  }
+                  padding-top: 20px;
+                  padding-bottom: 20px;
+                  color: $color-table-heading;
+                  font-family: "source_sans_proregular", Helvetica, sans-serif;
+                  font-size: $font-sz-base;
+                  font-weight: 600;
+                  text-align: left;
+                }
+              }
+            }
+            tbody {
+              tr {
+                th, td {
+                  padding-top: 20px;
+                  padding-bottom: 20px;
+                  color: $color-table-row;
+                  font-family: "source_sans_proregular", Helvetica, sans-serif;
+                  font-size: $font-sz-base;
+                }
+                td {
+                  &:first-child {
+                    padding-left: 80px;
+                  }
+                }
+                &:last-child {
+                  td,th {
+                    &:first-child {
+                      border-bottom-left-radius: 5px;
+                    }
+                    &:last-child {
+                      border-bottom-right-radius: 5px;
+                    }
+                  }
+                }
+              }
+            }
+            &.row-hr-border-only {
+              tbody {
+                tr {
+                  th, td {
+                    border-right: 0px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .card {
+      float: none;
+    }
+  }
+}
+
+accordion {
+  accordion-group {
+    .panel-default {
+      padding-top: 5px;
+      
+      .panel-heading {
+        padding: 17px 20px 17px 80px;
+        background-color: transparent;
+        border: 1px solid $color-grey-cc;
+        border-radius: 5px;
+
+        .panel-title {
+          min-height: 36px;
+          color: $color-grey-5c;
+          font-family: "source_sans_proregular";  
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 36px;
+          letter-spacing: 1px;
+
+          .icon-arrow {
+            &.up {
+              background: transparent url('#{$local-image-path}/icons/arrow_up.svg') no-repeat right center;
+            }
+            &.down {
+              background: transparent url('#{$local-image-path}/icons/arrow_down.svg') no-repeat right center;
+            }
+          }
+
+          .icon-delete {
+            background: transparent url('#{$local-image-path}/catalyst-icons/close_grey.png') no-repeat right center;
+            &.present {
+              display: inline-block;
+              width: 22px;
+              height: 22px;
+              background-size: 22px 22px;
+            }
+            &.hide {
+              display: none;
+            }
+          }
+        }  
+      }
+
+      .panel-collapse {
+        .panel-body {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+
+  accordion-group.panel-open {
+    .panel-default {
+      .panel-heading {
+        border-bottom: none !important;
+        border-radius: 5px 5px 0 0 !important;
+      }
+    }
+  }
+}

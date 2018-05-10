@@ -1,0 +1,49 @@
+@import "../../../styles/variables";
+
+.modal-sm {
+  width: 350px;
+  .modal-content {
+    .modal-header {
+      padding-bottom: 10px;
+      .modal-title {
+        font-size: 18px;
+        margin-top: 0;
+      }
+    }
+    .modal-body {
+      padding: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.modal-lg {
+  max-width: 660px;
+}
+
+.modal {
+  .modal-dialog {
+    .modal-content {
+      padding: 0px;
+      .modal-header {
+        background-color: $color-blue-00;
+        padding: 25px 30px;
+        .modal-title {
+          color: $color-white-ff;
+          font-family: source_sans_proregular, sans-serif;
+          font-size: 28px;
+          line-height: 36px;
+          margin-top: 0px;
+        }
+      }
+      .modal-body {
+        margin: 0px;
+        padding: 30px;
+      }
+      .modal-footer {
+        border-top: none;
+        padding: 0px 30px 30px 30px;
+      }
+    }
+  }
+}

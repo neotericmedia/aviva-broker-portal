@@ -1,0 +1,120 @@
+@import "../../../../styles/quoter";
+
+.coverage-title {
+  color: $color-grey-5c;
+  font-family: source_sans_prolight;
+}
+
+.coverage-mandatory {
+  display: inline-block;
+  width: 100%;
+  border-radius: 5px;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+
+  .product-name {
+    color: $color-grey-5c;
+    background-color: $color-grey-e5;
+
+    span:first-child {
+      height: 40px;
+      width: 40px;
+      border-radius: 20px;
+    }
+
+    span:nth-child(2) {
+      max-width: calc(100% - 44px);
+      padding-left: 15px;
+      font-size: 18px;
+    }
+  }
+
+  .product-content {
+    border: 1px solid $color-grey-ee;
+    border-radius: 0 0 2px 2px;
+    .coverage-block { 
+      .coverage-name {
+        font-size: $font-sz-base;
+        color: $color-grey-77;
+        overflow-wrap: break-word;
+      }
+  
+      .pr-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/property.png"); }
+      .al-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/als.png"); }
+      .eb-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/equipment_breakdown.png"); }
+      .cr-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/crime.png"); }
+      .im-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/inland_marine.png"); }
+      .gl-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/general_liability.png"); }
+      .ac-icon { background-image: url("../#{$image-path}/catalyst-icons/coverage-icons/accident.png"); }
+
+      .pr-icon, .al-icon, .eb-icon, .cr-icon, .im-icon, .gl-icon, .ac-icon {
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
+.coverage-optional {
+  .btn-optional {
+    width: 100%;
+    min-height: $input-height;
+    font-size: $font-sz-base;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0;
+  
+    span:first-child {
+      height: 30px;
+      width: 30px;
+      border: 1px solid;      
+      border-radius: 4px;
+      background-color: $color-white-ff;
+    }
+
+    span:nth-child(2) {
+      width: calc(100% - 50px);
+      padding-left: 10px;
+    }
+  }
+
+  .btn-selected {
+    background-color: $color-green-4c;
+    border-color: $color-green-4c;
+    box-shadow: $box-shadow;
+    font-family: source_sans_prolight;
+    span:first-child {
+      border-color: $color-white-ff;
+
+      i {
+        top: 7px;
+        left: 6px;
+        font-size: 1em;
+        color: $color-green-4c;
+      }
+    }
+
+    span:nth-child(2) {
+      color: $color-white-ff;
+      font-weight: bold; 
+    }
+  }
+
+  .btn-unselected {
+    background-color: $color-grey-f9;
+    box-shadow: $box-shadow;
+    border-color: $input-border-color;
+
+    span:first-child {
+      border-color: $color-grey-aa;
+    }
+
+    span:nth-child(2) {
+      color: $color-grey-44;
+    }
+  }
+}

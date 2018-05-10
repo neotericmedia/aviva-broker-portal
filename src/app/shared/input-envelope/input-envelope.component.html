@@ -1,0 +1,5 @@
+<div class="input-group {{groupClass}}" [ngClass]="{ 'input-envelope-right': isSymbolOnRight }">
+  <span *ngIf="symbol && !isSymbolOnRight" class="input-group-addon" id="{{symbolId}}">{{ symbol }}</span>
+  <ng-content select=".input-envelope-content"></ng-content>
+  <span *ngIf="symbol && isSymbolOnRight" class="input-group-addon" id="{{symbolId}}">{{ symbol }}</span>
+</div>

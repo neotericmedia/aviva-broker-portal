@@ -1,0 +1,7 @@
+<input-envelope>
+  <select [name]="name" class="form-control input-envelope-content" (change)="onInputChange($event.target.value)">
+    <option disabled [selected]="!innerValue ? true : null">{{ 'form.dropdown.select' | translate }}</option>
+    <!-- TODO: so far, there is no need to format number for opt.Locale.Label. May need to revisit. -->
+    <option *ngFor="let opt of options" [value]="opt.id" [selected]="innerValue === opt.id">{{ opt.Locale.Label }}</option>
+  </select>
+</input-envelope>

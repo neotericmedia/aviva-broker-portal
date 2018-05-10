@@ -1,0 +1,40 @@
+<!-- Industry Code -->
+<div *ngIf="isReady">
+  <form novalidate [formGroup]="industryRatingForm" class="content-wrap">
+    <div class="divider-hr"></div>
+    <div class="row pad-tb-15">
+      <div class="col-xs-6">
+        <label for="industry" class="input-field-title">{{ 'business.details.title.industryCode' | translate }}</label>
+        <div class="ngx-completer-container">
+          <input id="industryInfo" formControlName="industryCode"
+            [(ngModel)]="industryInfoText"
+            [typeahead]="industryInfoDS"
+            typeaheadMinLength="3"
+            placeholder="{{ 'business.details.placeholder.industryCode' | translate }}"
+            typeaheadOptionField="title"
+            (typeaheadLoading)="setIndustryLoading($event)"
+            (typeaheadNoResults)="setIndustryNoMatch($event)"
+            (typeaheadOnSelect)="updateIndustry($event)"
+            typeaheadWaitMs="300"
+            typeaheadPhraseDelimiters=" "
+            (blur)="onBlurIndustry()"
+            class="form-control ngx-completer">
+        </div>
+        <div class="ngx-completer-notifier-container">
+          <div *ngIf="industryInfoLoading === true" class="ngx-completer-notifier">
+            {{ 'loading' | translate }}
+          </div>
+          <div *ngIf="industryInfoNoMatch === true && industryCodeControl.value"
+            class="ngx-completer-notifier">
+            {{ 'noResultsFound' | translate }}
+          </div>
+        </div>
+        <div *ngIf="showErrors">
+          <div *ngIf="industryCodeControl.invalid" class="alert alert-danger">
+            {{ 'business.details.errors.industryCode.required' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

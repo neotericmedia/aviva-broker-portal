@@ -1,0 +1,14 @@
+<accordion-group #myGroup [isOpen]="isOpen" [id]="id" class="{{groupClass}}" >
+  <div accordion-heading>
+    <div class="row accordion-heading">
+      <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 pad-0">
+        <span class="{{iconClass}} icon-left icon-height-37"></span>  
+        <span>{{ title }}</span>
+      </div>
+      <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 pad-l-0 text-right">
+        <span class="icon-arrow" [ngClass]="{'up': myGroup?.isOpen, 'down': !myGroup?.isOpen}"></span>
+      </div>
+    </div>
+  </div>
+  <ng-content select=".accordion-section-content"></ng-content>
+</accordion-group>

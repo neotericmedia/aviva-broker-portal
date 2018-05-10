@@ -1,0 +1,87 @@
+@import "../../../../styles/variables";
+
+.add-dropdown {
+  width: 257px;
+  float: right;
+
+  .rectangle-arrow-btn {
+    position: relative;
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: 55px;
+    border: 1px solid $color-blue-4f;
+    border-radius: 2px;
+    background-color: $color-white-ff;
+
+    span {
+      position: absolute;
+      top: -1px;
+
+      &:first-child {
+        left: 0;
+        width: calc(100% - 43px);
+        line-height: 55px;
+        color: $color-blue-4f;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: transparent;
+      }
+      
+      &:last-child {
+        right: 0;
+        width: 43px;
+        background-color: $color-blue-4f;
+        color: $color-white-ff;
+        i {
+          line-height: 55px;
+        }
+      }
+    }
+  }
+
+  .option {
+    outline: none;
+    border: none;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 54px;
+    line-height: 54px;
+    font-family: "source_sans_proregular";
+    color: $color-grey-5c;
+    font-size: $font-sz-base;
+    background-color: $color-grey-ee;
+    cursor: pointer;
+
+    span:first-child {
+      position: absolute;
+      top: 0;
+      left: 20px;
+    }
+
+    i {
+      opacity: 0;
+      position: absolute;
+      color: $color-green-4c;
+      top: 19px;
+      right: 20px;
+    }
+
+    &:hover {
+      background-color: $color-grey-e5;
+      i {
+        opacity: 1; 
+      }
+    }
+  }
+}
+
+select option {
+  font-weight: bold;
+
+  &:disabled {
+    font-weight: normal;
+    background-color: $color-grey-ee;
+  }
+}

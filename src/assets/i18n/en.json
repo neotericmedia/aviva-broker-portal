@@ -1,0 +1,648 @@
+{
+    "login": {
+        "title": "Please Sign In",
+        "username": "Username",
+        "password": "Password",
+        "loginBtn": "Login",
+        "loginInstruction": "Please use your employee username (starts with e) and password to login.",
+        "notMatched": "Username and password do not match.",
+        "serverError": "Cannot login due to server error.",
+        "sessionExpired": "Session expired or the user is not authorised. Redirecting to login page..."
+    },
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "invalidEmail": "Please enter a valid email address.",
+    "noResultsFound": "No result found",
+    "quoteBreadcrumb": {
+        "businessInfo": "Business Info",
+        "coverageInfo": "Coverage Info",
+        "summary": "Summary",
+        "bindInfo": "Bind Info"
+    },
+    "guard": {
+        "navigateMessage": "Are you sure you want to leave this page and discard your changes?",
+        "createNewQuote": "Are you sure you want to discard your changes and create a new quote? [TBD]",
+        "deleteConfirmation": "Are you sure you want to delete this loss payee and/or mortgagee? "
+    },
+    "header": {
+        "allQuotes": "All Quotes",
+        "newQuote": "New Quote",
+        "dashboard": "Dashboard",
+        "report": "Report",
+        "logout": {
+            "link": "Log Out",
+            "status": {
+                "loggingOut": "Logging Out",
+                "error": "Failed to logout"
+            }
+        }
+    },
+    "business": {
+        "notifications": {
+            "saveSuccess": "Quote saved successfully",
+            "saveError": "Error saving, please try again",
+            "fieldError": "Please correct form fields errors.",
+            "quoteCopied": "Quote Copied"
+        },
+        "broker": {
+            "headTitle": "Broker Code & Brokerage Name",
+            "placeholder": "Enter Broker Code or Broker Name",
+            "contactName": "Broker Contact Name",
+            "contactEmail": "Broker Contact Email"
+        },
+        "details": {
+            "headTitle": "Business Details",
+            "title": {
+                "quoteNumber": "RTM Quote Number",
+                "namedInsured": "Business Legal Name",
+                "operatingname": "Operating Name",
+                "relationToInsured": "Relation to Insured",
+                "addressAutoCompleter": {
+                    "locationAddress": "Location Address",
+                    "mailingAddress": "Mailing Address",
+                    "changeAddress": "Change Address"
+                },
+                "address": {
+                    "unitNumber": "Unit Number",
+                    "streetAddress": "Street Address",
+                    "city": "City",
+                    "province": "Province / Territory",
+                    "country": "Country",
+                    "postalCode": "Postal Code"
+                },
+                "mailingAddressQuestion": "Same as mailing address?",
+                "industryCode": "What does the business do?",
+                "annualRevenueCA": "Annual revenue (Canada)",
+                "annualRevenueUS": "Annual revenue (USA)",
+                "annualRevenueFO": "Annual revenue (Foreign)",
+                "annualPayrollCA": "Payroll (Canada)",
+                "annualPayrollUS": "Payroll (USA)",
+                "annualPayrollFO": "Payroll (Foreign)",
+                "yearsInBusiness": "Years in business",
+                "yearsInRelevantBusiness": "Years of relevant business experience",
+                "numClaims": "Number of claims within the last 5 years",
+                "overClaimLimit": "Does the insured have any one claim with a payout of more than $10,000?",
+                "hasOperatingName": "Does the client have an operating name?",
+                "businessSetUp": "How is client's business set up?",
+                "wasPolicyCancelled": "Has Risk's insurance been cancelled or non-renewed by Aviva or any other insurer in the last 5 years?",
+                "displayBusinessName": {
+                    "1": "{{namedInsured}} and {{operatingName}}",
+                    "2": "{{namedInsured}} operating as {{operatingName}}",
+                    "3": "{{operatingName}} operated by {{namedInsured}}",
+                    "4": "{{namedInsured}} care of {{operatingName}}",
+                    "5": "{{namedInsured}} certificate holder of {{operatingName}}",
+                    "6": "{{operatingName}} a division of {{namedInsured}}",
+                    "7": "{{namedInsured}} Her Majesty The Queen in Right of {{operatingName}}",
+                    "8": "{{namedInsured}} trading as {{operatingName}}"
+                }
+            },
+            "placeholder": {
+                "namedInsured": "Enter Business Name",
+                "operatingName": "Enter Named Insured",
+                "address": "Enter Address",
+                "mailingAddress": "Enter Mailing Address",
+                "industryCode": "Enter Industry Description"
+            },
+            "options": {
+                "operatingName": {
+                    "yes": "Yes",
+                    "no": "No"
+                },
+                "businessSetUp": {
+                    "1": "Individual",
+                    "2": "Partnership",
+                    "3": "Corporation",
+                    "4": "Joint Venture"
+                },
+                "claimOptions": {
+                    "0": "None",
+                    "1": "1",
+                    "2": "2",
+                    "3": "3 or more"
+                },
+                "relationToInsured": {
+                    "1": "Additional Named Insured",
+                    "2": "Operating As",
+                    "3": "Operated By",
+                    "4": "Care Of",
+                    "5": "Certificate Holder",
+                    "6": "Division Of",
+                    "7": "Her Majesty the Queen in Right of",
+                    "8": "Trading As"
+                }
+            },
+            "DnB": {
+                "pending": "Looking up business...",
+                "DunsNumber": {
+                    "error": {
+                        "notFound": "No result is found based on the provided business name and address.",
+                        "moreThanOneFound": "Cannot find unique result based on the provided business name and address.",
+                        "exception": "Business Lookup service call failed."
+                    }
+                },
+                "GDM": {
+                    "success": "D&B GDM service call is done. The following information is retrieved:",
+                    "error": {
+                        "notFound": "Error in D&B GDM service call.",
+                        "exception": "D&B GDM service call failed."
+                    }
+                },
+                "fieldsTranslate": {
+                    "yearsInBusiness": "Years in business",
+                    "numOfEmployees": "Number of employees",
+                    "suitJudgementExists": "Suit judgement exists",
+                    "financialStressScore": "Financial stress score",
+                    "commercialCreditScore": "Commercial credit score"
+                }
+            },
+            "errors": {
+                "effectiveDt": {
+                    "required": "Effective Date is required."
+                },
+                "expiryDt": {
+                    "required": "Expiry Date is required."
+                },
+                "brokerCode": {
+                    "required": "Broker Code and Broker Name are required."
+                },
+                "brokerContactName": {
+                    "required": "Broker Contact Name is required."
+                },
+                "quoteNumber": {
+                    "required": "Quote Number is required.",
+                    "pattern": "Quote Number should be 8 digits.",
+                    "exists": "Following quote number(s) already exist(s): {{quoteNumbers}}."
+                },
+                "namedInsured": {
+                    "required": "Legal Name is required."
+                },
+                "relationToInsured": {
+                    "required": "Relation to insured is required."
+                },
+                "operatingName": {
+                    "required": "Operating name is required."
+                },
+                "businessSetup": {
+                    "required": "Please select the business setup type."
+                },
+                "industryCode": {
+                    "required": "Please enter business description and choose the most matched option."
+                },
+                "annualPayrollCA": {
+                    "required": "Required."
+                },
+                "annualPayrollUS": {
+                    "required": "Required."
+                },
+                "annualPayrollFO": {
+                    "required": "Required."
+                },
+                "annualRevenueCA": {
+                    "required": "Required."
+                },
+                "annualRevenueUS": {
+                    "required": "Required."
+                },
+                "annualRevenueFO": {
+                    "required": "Required."
+                },
+                "yearsInBusiness": {
+                    "required": "Years in business is required."
+                },
+                "yearsInRelevantBusiness": {
+                    "required": "Years of relevant business experience is required."
+                },
+                "numOfClaims": {
+                    "required": "Number of Claims is required."
+                },
+                "overClaimLimit": {
+                    "required": "Please select Yes or No."
+                },
+                "wasPolicyCancelled": {
+                    "required": "Please select Yes or No."
+                },
+                "address": {
+                    "streetAddress": {
+                        "required": "Required"
+                    },
+                    "city": {
+                        "required": "Required"
+                    },
+                    "province": {
+                        "required": "Required"
+                    },
+                    "country": {
+                        "required": "Required"
+                    },
+                    "postalCode": {
+                        "required": "Required"
+                    }
+                },
+                "addressAutoCompleter": {
+                    "required": "Required"
+                },
+                "claims": {
+                    "lineOfBusiness": {
+                        "required": "Please select line of business."
+                    },
+                    "status": {
+                        "required": "Please select status."
+                    },
+                    "lossDate": {
+                        "required": "Please select loss date from calendar."
+                    },
+                    "lossType": {
+                        "required": "Please select loss type."
+                    }
+                }
+            },
+            "tooltip": {
+                "address": "Only Canadian addresses are allowed."
+            }
+        },
+        "coverage": {
+            "headTitle": "Coverage",
+            "mandatory": "Mandatory",
+            "mandatoryCoverages": "Based on the information provided, the coverages below are mandatory on any Aviva policy.",
+            "optional": "Optional"
+        },
+        "claims": {
+            "headTitle": "Claim Details",
+            "claimTitle": "Claim",
+            "title": {
+                "lineOfBusiness": "Line of business",
+                "status": "Status",
+                "lossDate": "Loss Date",
+                "lossType": "Loss Type"
+            },
+            "none": "None",
+            "fiverOrMore": "5 or more",
+            "notification": {
+                "getQustionsOptionsError": "Failed to load Options for Claim Questions.",
+                "getProvinceOptionsError": "Failed to load province options."
+            }
+        },
+        "dnb": {
+            "lookupCall": "Calling DnB Lookup Service...",
+            "resultsFound": "results found.",
+            "dunsNumUsage": "Calling DGM service using DUNS_NBR: ",
+            "lookupDone": "DnB Lookup Service Done.",
+            "lookupFailed": "DnB Lookup Service Call Failed",
+            "gdmServiceCall": "Calling DnB GDM Service...",
+            "gdmServiceDone": "Calling DnB GDM Service Done.",
+            "gdmDerviceFailed": "DnB GDM Service Call Failed to return business details."
+        }
+    },
+    "lobCoverage": {
+        "coverage": {
+            "title": {
+                "fus": {
+                    "headTitle": "FUS Results",
+                    "title": {
+                        "territoryGrade": "Territory Grade",
+                        "townGrade": "Town Grade"
+                    }
+                },
+                "property": {
+                    "deductible": "Deductible",
+                    "limit": "Limit"
+                }
+            },
+            "errors": {
+                "required": "Required.",
+                "lessThanMinimum": "Minimum ",
+                "greaterThanMaximum": "Maximum ",
+                "lob": "Please correct all errors related to coverages and proceed again."
+            },
+            "relationship": {
+                "cmGroupsFailure": "One or more of these must be selected; {{coverages}}.",
+                "ceGroupsFailure": "One of the following must be selected; {{coverages}}.",
+                "cdGroupsFailure": "All or none of these must be selected; {{coverages}}.",
+                "meGroupsFailure": "Only one can be selected; {{coverages}}.",
+                "ppGroupsFailure": "One of the parents of {{childCoverage}} needs to be selected; {{coverages}}.",
+                "nonEmptyGroupsFailure": "At least one coverage must be selected.",
+                "CM": "At least one of these coverages must be selected: ",
+                "CE": "Please select one of these coverages: ",
+                "ME": "Only one of these coverages can be selected at a time: ",
+                "CD": "All of these coverages must be selected together or none of these must be selected: "
+            },
+            "zone": {
+                "title": "Zone:",
+                "range": {
+                    "L": "Low",
+                    "M": "Medium",
+                    "H": "High",
+                    "D": "Decline"
+                }
+            },
+            "tooltip": {
+                "titleCoverage": "This is a title Coverage.",
+                "associatedCoverage": "Please select a stand alone coverage before select this associated coverage. [TBD]"
+            }
+        },
+        "lobQuestions": {
+            "title": {},
+            "errors": {
+                "answer": {
+                    "required": "Answer is required.",
+                    "yearBuiltLength": "Year built should be 4 digits - ex. '1990'."
+                },
+                "lobQuestions": "Please complete the coverage questions forms.",
+                "loadLobQuestions": "Failed to retrieve LOB questions."
+            },
+            "asyncTask": {
+                "pendingFUS": "Calling FUS Service...",
+                "successFUS": "FUS Service Call Done. The following information is retrieved:",
+                "failureFUS": "FUS Service Call Failed."
+            },
+            "fieldsTranslate": {
+                "territoryGrade": "Territory grade",
+                "townGrade": "Town grade",
+                "yearBuilt": "Year built",
+                "storeys": "Number of storeys",
+                "constructionCode": "Construction type",
+                "totalArea": "Total building area - sqft"
+            }
+        },
+        "notifications": {
+            "loadLOBsError": "Failed to load LOB coverages.",
+            "loadZonesError": "Failed to load coverages with zone."
+        }
+    },
+    "summary": {
+        "deviation": {
+            "error": "Range: -100 to 100."
+        },
+        "sendPdf": {
+            "title": {
+                "subject": "Subject",
+                "sender": "Sender",
+                "recipient": "Recipient",
+                "message": "Message",
+                "reviewemail": "Please review"
+            },
+            "errors": {
+                "subject": {
+                    "required": "Subject is required."
+                },
+                "message": {
+                    "required": "Message is required."
+                }
+            },
+            "placeholder": {
+                "subject": "Enter email subject",
+                "sender": "Enter sender's email address",
+                "recipient": "Enter recipient's email address",
+                "message": "Enter email message"
+            },
+            "defaultValues": {
+                "subject": "Aviva Quote: {{namedInsured}}",
+                "message": "Please see your quote attached."
+            },
+            "result": {
+                "success": "Quote document has been successfully sent!",
+                "failure": "Failed to send quote document email."
+            }
+        },
+        "coverage": {
+            "column": {
+                "coverage": "Coverage",
+                "limit": "Limit",
+                "deductible": "Deductible",
+                "rate": "Rate",
+                "premium": "Premium"
+            },
+            "included": "Included",
+            "ALSLimit": "ALS Limit",
+            "deductibles": {
+                "PD": "PD: ",
+                "BI": "BI: "
+            }
+        },
+        "quoteConditions": {
+            "header": {
+                "title": "Quote Conditions"
+            }
+        }
+    },
+    "dashboard": {
+        "industryCodes": {
+            "title": "Industry Codes",
+            "summary": "Quotes by Industry Codes"
+        },
+        "brokerCodes": {
+            "title": "Broker Codes",
+            "summary": "Quotes by Broker Codes"
+        },
+        "quoteStatus": {
+            "title": "Quotes",
+            "summary": "Quotes by status",
+            "xAxisLabel": "Status",
+            "yAxisLabel": "Amount"
+        },
+        "latestQuotes": {
+            "title": "Latest Quotes",
+            "summary": "Latest Quotes created by current user",
+            "columns": {
+                "quoteNumber": "Quote No.",
+                "status": "Status",
+                "brokerCode": "Broker Code",
+                "nameInsured": "Name Insured",
+                "createdDate": "Created Date"
+            }
+        },
+        "notifications": {
+            "noAnalytics": "Cannot retrieve analytics data.",
+            "noLatestQuotes": "Cannot retrieve Latest Quotes."
+        }
+    },
+    "buttons": {
+        "back": "Back",
+        "save": "Save",
+        "next": "Next",
+        "bind": "Bind",
+        "cancelBind": "Cancel Bind",
+        "issuePolicy": "Issue Policy",
+        "returnToDashboard": "Return to Dashboard",
+        "sendPdf": "Send PDF",
+        "filter": "Filter",
+        "download": "Download",
+        "add": "Add",
+        "editCoverage": "Edit Coverage"
+    },
+    "datepicker": {
+        "effectiveDate": "Effective Date",
+        "expiryDate": "Expiry Date",
+        "fromDate": "From",
+        "toDate": "To"
+    },
+    "form": {
+        "dropdown": {
+            "select": "-- Select --"
+        },
+        "input": {
+            "placeholder": "Enter amount"
+        }
+    },
+    "quoteSearch": {
+        "date": "Date",
+        "quoteNumber": "Quote Number",
+        "companyName": "Company Name",
+        "broker": "Broker",
+        "premium": "Premium",
+        "status": "Status",
+        "actions": "Actions",
+        "copy": "Copy",
+        "edit": "Edit",
+        "history": "See Quote History",
+        "searchByQuoteNum": "Search by Quote Number",
+        "filterByDate": "Filter Quotes by Dates",
+        "error": {
+            "noData": "Failed to retrieve quote records."
+        },
+        "notFound": "No result found."
+    },
+    "industrycodesearch": {
+        "page": {
+            "title1": "Catalyst Broker Portal.",
+            "title2": "Small business, made easy"
+        },
+        "searchTitle": "In what industry is the business?",
+        "quoteExists": "Already have a quote?",
+        "quoteExistsBtn": "Click here",
+        "contactUs": "There when you need us",
+        "contactPhoneNumber": "1-866-692-8482",
+        "contactUsDescription": "Call us and an underwriter will ensure you receive fast and reliable personal support.",
+        "policyRestrictions": "Policy Restrictions",
+        "placeholder": "Sales, Flowerist ...",
+        "startQuote": "Start Quote"
+    },
+    "quoteReport": {
+        "quoteNumber": "Quote Status changes",
+        "reportByDatesAndType": "Report by dates and type",
+        "error": {
+            "quoteNumber": "Please enter quote number.",
+            "fields": "Please input the 'From' date, 'To' date and 'Report Type' selection in order to proceed.",
+            "noReport": "Report cannot be generated based on the input."
+        }
+    },
+    "bind": {
+        "mortgageePrefix": "Mortgagee: {{ name }}",
+        "lossPayeePrefix": "Loss Payee: {{ name }}",
+        "payeeMortgagee": "Loss Payee/Mortgagee",
+        "addPayeeMortgagee": "Add Payee/Mortgagee",
+        "paymentInformation": "Payment Information",
+        "paymentSetup": "How would the customer like their payments set up?",
+        "agencyBill": "Agency Bill",
+        "directBill": "Direct Bill",
+        "name": "Name",
+        "type": "Type",
+        "buttons": {
+            "addAnother": "Save & add another",
+            "close": "Save & close"
+        },
+        "toast": {
+            "fieldError": "Please correct form fields errors.",
+            "getQuoteError": "Failed to retrieve information for quote: {{quoteNumber}}",
+            "getBindTypesError": "Failed to load form type options",
+            "lastFormInvalid": "Please complete the last form before adding a new one.",
+            "completeBeforeClose": "Please complete the form before closing.",
+            "unbindSuccess": "Successfully unbound quote. Redirecting to quote summary.",
+            "unbindError": "Failed to unbind quote: {{quoteNumber}}"
+        },
+        "saveSuccess": "Successfully saved bind info",
+        "saveFailure": "Failed to save bind info",
+        "unbindConfirm": "Are you sure you want to unbind?",
+        "deleteConfirm": "Are you sure you want to delete?",
+        "policyNumber": "Policy Number",
+        "startDate": "Start Date",
+        "endDate": "End Date"
+    },
+    "generic": {
+        "error": "Unexpected error has happened. If the problem persists, please contact your administrator or IT support.",
+        "enterQuoteNum": "Enter quote number",
+        "required": "Required.",
+        "getProvinceOptionsError": "Failed to load province options.",
+        "tooltip": {
+            "address": "Only Canadian addresses are allowed."
+        },
+        "placeholder": {
+            "addressAutoCompleter": "Enter Address"
+        },
+        "address": {
+            "title": {
+                "locationAddress": "Location Address",
+                "unitNumber": "Unit Number",
+                "unitNumberPre": "Unit#",
+                "streetAddress": "Street Address",
+                "city": "City",
+                "province": "Province / Territory",
+                "postalCode": "Postal Code"
+            },
+            "error": {
+                "addressAutoCompleter": {
+                    "required": "Required"
+                },
+                "streetAddress": {
+                    "required": "Required"
+                },
+                "city": {
+                    "required": "Required"
+                },
+                "province": {
+                    "required": "Required"
+                },
+                "postalCode": {
+                    "required": "Required"
+                },
+                "country": {
+                    "notCanada": "Only Canadian address is accepted."
+                }
+            },
+            "changeAddress": "Change Address",
+            "showAutoCompleter": "Search Address"
+        },
+        "businessDetails": {
+            "title": {
+                "aboutTheBusiness": "About the Business",
+                "address": "Address",
+                "description": "Description",
+                "businessDescription": "Business Description",
+                "industryCode": "Industry Code"
+            }
+        },
+        "brokerDetails": {
+            "headTitle": "Broker Details",
+            "title": {
+                "brokerage": "Brokerage",
+                "contactName": "Contact Name",
+                "contactEmail": "Contact Email"
+            }
+        },
+        "premiumDetails": {
+            "headTitle": "Premium Details",
+            "title": {
+                "effectiveDate": "Effective Date",
+                "expiryDate": "Expiry Date",
+                "quoteNumber": "Quote Number",
+                "commission": "Commission",
+                "deviateBy": "Deviate by:",
+                "deviation": "Deviation",
+                "newPremium": "New Premium",
+                "premium": "Premium",
+                "basePremium": "Base Premium",
+                "annualPremium": "Annual Premium",
+                "percentDeviated": "Percent Deviated",
+                "reset": "Reset",
+                "noPremiumCoveragesAvailable": "No premium coverages available"
+            },
+            "calculationError": "Failed to calculate premium. Please check the deviation."
+        }
+    },
+    "version": {
+        "history": "Version History ({{quoteNumber}})",
+        "notFound": "Quote History not found"
+    }
+}

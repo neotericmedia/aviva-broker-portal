@@ -1,0 +1,15 @@
+<div class="col-xs-12 col-sm-6">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <div *ngFor="let l of choiceList" class="choices">
+        <div class="info-title">{{l.label}}</div>
+        <div class="button-group">
+          <button *ngFor="let n of l.values" class="col-xs-4 col-sm-4" (click)="select(n)" [ngClass]="{selected:n === selected}">
+            {{n}}
+            <span class="divider-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

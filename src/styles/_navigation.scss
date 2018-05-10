@@ -1,0 +1,86 @@
+.pro-nav {
+  .hr-line {
+    top: 31px;
+  }
+  ul li {
+    height: 60px;
+    border: 1px $color-grey-9b solid;
+    background-color: white;
+    color: $color-grey-9b;
+    font-weight: bold;
+    font-family: "source_sans_probold";
+    span {
+      line-height: 52px;
+      font-style: normal;
+      font-size: 16px;
+    }
+    a {
+      border-bottom: none;
+      &:hover {
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+    &.current {
+      cursor: default;
+    }
+    &.current, &.completed {
+      background-color: $primary-color-1;
+      border: none;
+      background-position: 13px 10px;
+      border-bottom: none;
+      a {
+        color: $color-white-ff;
+        border-bottom: none;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    &.completed {
+      background-size: 40px auto;
+      cursor: pointer;
+      // override the style from digital-css module
+      span:first-child {
+        display: block;
+      }
+      a:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &.tierce {
+    ul li {
+      width: 22%;
+      margin-right: 17%;
+    }
+  }
+  &.quarter {
+    ul li {
+      width: 19%;
+      margin-right: 8%;
+    }
+  }
+  &.tierce, &.quarter {
+    ul li:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .pro-nav {
+    &.tierce {
+      ul li {
+        width: 28%;
+        margin-right: 8%;
+      }
+    }
+    &.quarter {
+      ul li {
+        width: 22%;
+        margin-right: 4%;
+      }
+    }
+  }
+}

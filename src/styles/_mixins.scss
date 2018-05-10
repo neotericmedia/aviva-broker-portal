@@ -1,0 +1,11 @@
+@mixin background-image($image-path: "", $image-repeat: no-repeat, $image-position: left top, $image-size: "") {
+  @if $image-path {
+    background-image: url("#{$image-path}");
+    background-repeat: $image-repeat;
+    background-position: $image-position;
+  }
+
+  @if $image-size {
+    background-size: $image-size;
+  }
+}

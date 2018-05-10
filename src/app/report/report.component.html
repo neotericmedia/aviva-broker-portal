@@ -1,0 +1,65 @@
+<!-- Page content -->
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <form [formGroup]="reportForm">
+      <div id="searchByQuoteNum">
+        <label for="quoteNumber" class="input-field-title">
+          <span class="label-text">{{ 'quoteReport.quoteNumber' | translate }}</span>
+        </label>
+        <div class="row">
+          <div class="col-xs-10">
+            <input id="quoteNumber" class="input-field-content form-control" type="text"
+              formControlName="quoteNumber" placeholder="{{'generic.enterQuoteNum' | translate}}">
+          </div>
+          <div class="col-xs-2">
+            <button class="rectangle-btn" (click)="getTimeline()">
+              {{'buttons.download' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="filterByDate" class="pad-tb-20">
+        <label for="fromDate" class="input-field-title">
+          <span class="label-text">{{ 'quoteReport.reportByDatesAndType' | translate }}</span>
+        </label>
+        <div class="row">
+          <!-- From Date -->
+          <div class="col-xs-3 no-side-padding">
+            <div class="input-group has-feedback">
+              <span class="input-group-addon">{{ 'datepicker.fromDate' | translate }}</span>                
+              <input type="text" readonly class="input-field-content form-control dateinput dateinput-active"
+                id="fromDate" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsDatepickerConfig"
+                formControlName="fromDate" [maxDate]="maxFromDate" [outsideClick]="true"
+                (bsValueChange)="onUpdateFromDate($event)">
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+            </div>
+          </div>
+          <!-- To Date -->
+          <div class="col-xs-3 no-side-padding">
+            <div class="input-group has-feedback">
+              <span class="input-group-addon">{{ 'datepicker.toDate' | translate }}</span>
+              <input type="text" readonly class="input-field-content form-control dateinput dateinput-active"
+                id="toDate" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsDatepickerConfig"
+                formControlName="toDate" [maxDate]="maxToDate" [outsideClick]="true"
+                (bsValueChange)="onUpdateToDate($event)">
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+            </div>
+          </div>
+          <!-- Dropdown of report types -->
+          <div class="col-xs-4 no-side-padding">
+            <select id="reportType" class="form-control input-field-content" name="reportType" formControlName="reportType">
+              <option *ngIf="!reportForm.value.reportType" disabled selected value=null>{{ 'form.dropdown.select' | translate }}</option>
+              <option *ngFor="let opt of quoteTypes" [value]="opt.id">{{ opt.Locale.Description }}</option>
+            </select>
+          </div>            
+          <!-- Download Button -->
+          <div class="col-xs-2">
+            <button class="rectangle-btn" (click)="getReport()">
+              {{'buttons.download' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

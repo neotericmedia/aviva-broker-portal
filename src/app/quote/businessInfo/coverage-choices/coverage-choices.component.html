@@ -1,0 +1,30 @@
+<div *ngIf="lobs.mandatory && lobs.mandatory.length > 0">
+  <div class="form-header font-style-1">{{ 'business.coverage.headTitle' | translate }}</div>
+  <div class="row coverage-selections pad-tb-15">
+    <div class="col-xs-12 col-md-6">
+      <div class="coverage-title font-style-2">{{ 'business.coverage.mandatory' | translate }}</div>
+      <div class="coverage-mandatory mr-t-15">
+        <div class="product-name pad-15">
+          <span>{{ 'business.coverage.mandatoryCoverages' | translate }}</span>
+        </div>
+        <div class="product-content pad-15">
+          <div *ngFor="let lob of lobs.mandatory" class="coverage-block">
+            <div class="coverage-name pad-t-15">{{ lob.Locale.Title }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6 coverage-optional">
+      <div class="coverage-title font-style-2">{{ 'business.coverage.optional' | translate }}</div>
+      <div class="coverage-optional row mr-t-15">
+        <div class="col-xs-6 col-md-6" *ngFor="let lob of lobs.optional">
+          <button class="btn-optional mr-b-15" (click)="onClickLob(lob.LOBCode)"
+            [ngClass]="{'btn-selected': lob.selected, 'btn-unselected': !lob.selected}">
+            <span class="checkbox-common"><i *ngIf="lob.selected" class="fa fa-check" aria-hidden="true"></i></span>
+            <span class="checkbox-title-common">{{ lob.Locale.Title }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

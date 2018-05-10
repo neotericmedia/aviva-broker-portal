@@ -1,0 +1,51 @@
+<modal #payeeMortgageeModal title="{{ 'bind.payeeMortgagee' | translate }}" size="lg">
+  <div class="modal-body-content">
+    <div novalidate [formGroup]="payeeMortgageeForm" class="form-group pad-r-15" (ngSubmit)="send($event)">
+      <!-- Name Insured -->
+      <div class="row pad-b-15">
+        <div class="col-xs-12">
+          <div class="font-style-2 font-light mr-b-10">{{ 'dashboard.latestQuotes.columns.nameInsured' | translate }}</div>
+          <input class="form-control input-field-content" placeholder="{{ 'business.details.placeholder.operatingName' | translate }}">
+        </div>
+      </div>
+      <div class="divider-hr"></div>
+      <!-- Type -->
+      <div class="row pad-b-15">
+        <div class="col-xs-12">
+          <div class="font-style-2 font-light mr-b-10">{{ 'bind.type' | translate }}</div>
+          <div class="button-group btn-block">
+            <button (click)="onSelectPayee(true)"
+              [ngClass]="{'selected': payeeSelected, 'unselected': !payeeSelected}">
+              <span>{{ 'Payee' | translate }}</span>
+            </button>
+            <button (click)="onSelectPayee(false)"
+              [ngClass]="{'selected': !payeeSelected, 'unselected': payeeSelected}">
+              <span>{{ 'Mortgagee' | translate }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="divider-hr"></div>
+      <!-- Location -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="font-style-2 font-light mr-b-10">{{ 'Location of Payee' | translate }}</div>
+          <input class="form-control input-field-content" placeholder="{{ 'business.details.placeholder.address' | translate }}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Acton Buttons -->
+  <div class="modal-footer-content row">
+    <div class="col-xs-6">
+      <div class="pull-left">
+        <button class="btn secondary reverse" type="button" (click)="hide()">{{ 'cancel' | translate }}</button>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="pull-right">
+        <button class="btn secondary" type="button">{{ 'buttons.save' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</modal>

@@ -1,0 +1,17 @@
+<div>
+  <div class="timeline-header">
+    <i class="fa fa-2x fa-angle-left timeline-back-btn" aria-hidden="true" (click)="backBtnClicked()"></i>
+    <span class="timeline-header-text">{{versionHistoryTitle}}</span>
+  </div>
+  <ul class="timeline">
+    <li *ngFor="let item of items">
+      <div class="timeline-card">
+        <div class="timeline-card-bar">
+        </div>
+        <h4 class="timeline-card-title">{{item.title}}</h4>
+        <p class="timeline-card-body">{{item.body}}</p>
+        <p class="timeline-card-timestamp">{{item.timestamp}}</p>
+      </div>
+    </li>
+  </ul>
+</div>

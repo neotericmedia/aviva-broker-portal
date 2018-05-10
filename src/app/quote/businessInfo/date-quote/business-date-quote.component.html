@@ -1,0 +1,54 @@
+<div *ngIf="isReady">
+  <form novalidate [formGroup]="dateQuoteForm" class="content-wrap">
+    <div id="datepicker-section" class="mr-t-15">
+      <div class="row pad-tb-15">
+        <!-- Effective Date -->
+        <div class="col-xs-12 col-sm-3 no-side-padding">
+          <label for="effectiveDt" class="input-field-title">
+            <span class="label-text">{{ 'datepicker.effectiveDate' | translate }}</span>
+          </label>
+          <div class="has-feedback">
+            <input type="text" readonly class="input-field-content form-control icon-r-calendar dateinput dateinput-active"
+              bsDatepicker #dp="bsDatepicker" [minDate]="minEffectiveDate" [maxDate]="maxEffectiveDate"
+              formControlName="effectiveDt" [outsideClick]="true" [bsConfig]="bsDatepickerConfig"
+              (bsValueChange)="onUpdateEffectiveDate($event)">
+            <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+          </div>
+          <div *ngIf="showControlsErrorsIfAny">
+            <div *ngFor="let err of formErrors.effectiveDt" class="alert alert-danger">
+              {{ 'business.details.errors.effectiveDt.' + err | translate }}
+            </div>
+          </div>
+        </div>
+        <!-- Expiry Date -->
+        <div class="col-xs-12 col-sm-3 no-side-padding">
+          <label for="expiryDt" class="input-field-title">
+            <span class="label-text">{{ 'datepicker.expiryDate' | translate }}</span>
+          </label>
+          <div class="has-feedback">
+            <input type="text" readonly
+              class="input-field-content form-control icon-r-calendar dateinput"
+              value="{{ formatDate(dateQuoteInfo.expiryDate) }}" formControlName="expiryDt">
+            <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+          </div>
+        </div>
+      </div>
+      <div class="divider-hr"></div>
+      <div class="row pad-tb-15">
+        <!-- RTM Quote Number -->
+        <div class="col-xs-12 col-sm-6 no-side-padding">
+          <label for="effectiveDt" class="input-field-title">
+            <span class="label-text">{{ 'business.details.title.quoteNumber' | translate }}</span>
+          </label>
+          <div class="input-group">
+            <input id="quoteNumber" [attr.disabled]="isQuoteDisabled ? true : null" class="input-field-content form-control"
+              spellcheck="false" type="text" name="quoteNumber" formControlName="quoteNumber">
+          </div>
+          <div *ngFor="let err of formErrors.quoteNumber" class="alert alert-danger">
+            {{ err }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

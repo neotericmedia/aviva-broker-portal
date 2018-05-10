@@ -1,0 +1,116 @@
+@import "../../../styles/_variables";
+
+.pad-tb-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.premium-details {
+  padding: 0 40px;
+
+  .date-and-quote {
+    padding-right: 20px;
+  }
+
+  .premium {
+    padding-left: 20px;
+
+    .deviation {
+      margin-top: 80px;
+      margin-left: 35px;
+  
+      * > .base-premium-info {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 23px;
+        text-align: left;
+        min-width: 200px;
+      }
+  
+      .deviation-info {
+        min-width: 200px;
+
+        .deviation-percent {
+          display: inline-block;
+        }
+        .deviation-reset {
+          display: inline-block;
+          position: relative;
+          color: $color-cyan-9a;
+  
+          button {
+            background-color: $color-white-ff;
+            height: 23px;
+            line-height: 17px;
+            border: 1px solid $color-white-ff;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .divider-vr {
+    border-right: 1px solid $color-white-ff;
+    float: right;
+    top: 7%;
+    position: absolute;
+    height: 85%;
+    right: -2px;
+  }
+}
+
+.customer-details {
+  padding-left: 40px;
+}
+
+.broker-details {
+  padding-left: 40px;
+}
+
+.pad-lr-80 {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.quote-condition-container {
+  padding-left: 15px;
+  margin: 0;
+
+  .quote-condition {
+    font-family: source_sans_proregular, sans-serif;
+    font-size: 16px;
+    padding-bottom: 15px;
+  
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.info-deviation {
+  margin-top: 11px;
+
+  .input-group {
+    span, input {
+      height: 100%;
+      max-height: 50px;
+    }
+    input {
+      line-height: 23px;
+      border-right: 0;
+    }
+  }
+  
+  .alert-slim {
+    position: absolute;
+    top: 100%;
+    margin: 0;
+    padding: 4px 12px;
+    width: calc(100% - 30px);
+    color: $color-white-ff;
+    background-color: $color-red-b9;
+  }
+}

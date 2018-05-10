@@ -1,0 +1,50 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<!-- Coverage Info Form -->
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <confirm-modal #guardModal
+      message="{{ 'guard.navigateMessage' | translate }}"
+      confirmTitle="{{ 'yes' | translate }}"
+      declineTitle="{{ 'cancel' | translate }}">
+    </confirm-modal>
+    <quote-breadcrumb step="coverageInfo"></quote-breadcrumb>
+    <form *ngIf="isReady" novalidate [formGroup]="coverageInfoForm" class="content-wrap">
+      <accordion>
+        <!-- All the LOBs -->
+        <accordion-section *ngFor="let lob of lobs" groupClass="lob-details" [id]="lob.LOBCode" [title]="lob.LOB.Locale.Title">
+          <lob-details class="accordion-section-content"
+            [parentForm]="coverageInfoForm.get('lobDetails')"
+            [lobCode]="lob.LOBCode"
+            [lobCoverages]="mergedLobCvgsHash[lob.LOBCode]">
+          </lob-details>
+        </accordion-section>
+        <!-- All the LOB questions -->
+        <div *ngFor="let section of lobQuestionSectionList">
+          <div *ngIf="section.subsections && section.subsections.length">
+            <div class="form-header font-style-1">{{ section.title | translate }}</div>
+            <lob-questions
+              [parentForm]="coverageInfoForm.get('lobQuestions')"
+              [lobAnswers]="lobAnswersHash[section.lobCode]"
+              [lobCode]="section.lobCode"
+              [lobSubsections]="section.subsections"
+              [ifCallFUS]="ifCallFUS"
+              [showErrors]="showControlsErrorsIfAny">
+            </lob-questions>
+          </div>
+        </div>
+      </accordion>
+      <div class="row action-buttons-group">
+        <div class="col-xs-4 text-left">
+          <button class="btn secondary" type="submit" (click)="onBack()">{{ 'buttons.back' | translate }}</button>
+        </div>
+        <div class="col-xs-4 text-center">
+          <button class="btn secondary reverse" type="submit" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+        </div>
+        <div class="col-xs-4 text-right">
+          <button class="btn secondary" type="submit" (click)="onNext()">{{ 'buttons.next' | translate }}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

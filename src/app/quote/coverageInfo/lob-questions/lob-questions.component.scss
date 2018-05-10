@@ -1,0 +1,25 @@
+@import "../../../../styles/variables";
+
+.form-group-section {
+  padding-top: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-top: 1px solid $color-grey-cc;
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+.form-group-section-title {
+  padding: 0 0 50px 0;
+  height: 28px;
+  color: $color-grey-4a;
+  font-family: source_sans_proregular;
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.form-group-async-task {
+  padding: 0;
+}

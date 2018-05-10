@@ -1,0 +1,196 @@
+<div class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <email-modal #sendPdfModal subject="" email="" message=""
+      sendButtonTitle="{{ 'buttons.sendPdf' | translate }}" [onSend]="onSendPdf"></email-modal>
+    <quote-breadcrumb step="summary"></quote-breadcrumb>
+    <!-- Premium Details -->
+    <div class="row pad-tb-20" *ngIf="businessInfo">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card dark-cyan premium-details">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 date-and-quote">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="title pad-b-15">{{ 'generic.premiumDetails.headTitle' | translate }}</h2>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="info-title">{{ 'generic.premiumDetails.title.effectiveDate' | translate }}</div>
+                <div class="info bold">{{ formatDate(businessInfo.effectiveDate) }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="info-title">{{ 'generic.premiumDetails.title.quoteNumber' | translate }}</div>
+                <div class="info bold">{{ quoteNumber }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-50">
+                <div class="info-title">{{ 'generic.premiumDetails.title.expiryDate' | translate }}</div>
+                <div class="info bold">{{ formatDate(businessInfo.expiryDate) }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-50">
+                <div class="info-title">{{ 'generic.premiumDetails.title.commission' | translate }}</div>
+                <div class="info bold">{{ 20 | myNumberFormatter:'percent' }}</div>
+              </div>
+            </div>
+            <div class="divider-vr">&nbsp;</div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 premium">
+            <div [formGroup]="quoteSummaryForm" class="row deviation">
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="info-title">{{ 'generic.premiumDetails.title.deviateBy' | translate }}</div>
+                <div class="info-deviation position-relative">
+                  <input-envelope type="percent" groupClass="large" symbolId="basic-addon1">
+                    <input type="number" class="form-control no-shadow br-r-0 input-envelope-content"
+                      name="deviation" aria-describedby="basic-addon1" formControlName="deviation"
+                      (keydown)="onDeviationKeyDown($event)">
+                    <span class="input-group-addon reload input-envelope-content" id="basic-addon2" (click)='onRefreshClick()'>&nbsp;</span>
+                  </input-envelope>
+                  <div *ngIf="quoteSummaryForm.invalid" class="alert-slim">
+                    <i class="fa fa-exclamation-triangle pad-r-5" aria-hidden="true"></i>
+                    <span>{{ 'summary.deviation.error' | translate }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <div class="info-title">{{ premiumText | translate }}</div>
+                <div class="info huge">{{ calculatedTotalPremium | myRoundPipe | myNumberFormatter:'currency' }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-30" *ngIf="checkShowDeviation()">
+                <div class="info-title base-premium-info">{{ 'generic.premiumDetails.title.percentDeviated' | translate }}</div>
+                <div class="info-title deviation-info">
+                  <div class="info bold deviation-percent">{{ deviation | myNumberFormatter:'percent' }}</div>
+                  <div class="info-reset deviation-reset">
+                    <button (click)="onRefreshClick(true)">{{ 'generic.premiumDetails.title.reset' | translate }}</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-30" *ngIf="checkShowDeviation()">
+                <div class="info-title base-premium-info">{{ 'generic.premiumDetails.title.basePremium' | translate }}</div>
+                <div class="info bold">{{ originalTotalPremium | myRoundPipe | myNumberFormatter:'currency' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Customer and Broker Details -->
+    <div class="row pad-tb-20" *ngIf="businessInfo">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="card white customer-details">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="title pad-b-15">{{ businessInfo.displayBusinessName || businessInfo.namedInsured }}</h2>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="info-title">{{ 'generic.businessDetails.title.address' | translate }}</div>
+                <div class="info bold">{{ businessInfo.companyAddress.streetAddress }} {{ businessInfo.companyAddress.city }},
+                  {{ businessInfo.companyAddress.province }} {{ businessInfo.companyAddress.postalCode }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-30">
+                <div class="info-title">{{ 'generic.businessDetails.title.description' | translate }}</div>
+                <div class="info bold">{{ businessInfo.industryCodeDescription }}</div>
+              </div>
+
+              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 pad-tb-30">
+                <div class="info-title">{{ 'generic.businessDetails.title.industryCode' | translate }}</div>
+                <div class="info bold">{{ businessInfo.industryCode }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="card white broker-details">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h2 class="title pad-b-15">{{ 'generic.brokerDetails.headTitle' | translate }}</h2>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="info-title">{{ 'generic.brokerDetails.title.brokerage' | translate }}</div>
+                <div class="info bold">{{ businessInfo.brokerName }}</div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad-t-20">
+                <div class="info-title">{{ 'generic.brokerDetails.title.contactName' | translate }}</div>
+                <div class="info bold">{{ businessInfo.brokerContactName }}</div>
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad-tb-20">
+                <div class="info-title">{{ 'generic.brokerDetails.title.contactEmail' | translate }}</div>
+                <div class="info bold">{{ businessInfo.brokerContactEmail }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Coverages -->
+    <div>
+      <accordion>
+        <accordion-section *ngFor="let lobCoverage of lobCoverageList"
+          groupClass="ac-table {{ 'icon-' + lobCoverage.LOBCode.toLowerCase() }}"
+          [title]="translate.instant(lobCoverage.LOBDescription)">
+          <div class="accordion-body accordion-section-content">
+            <table class="table table-striped row-hr-border-only">
+              <thead>
+                <tr>
+                  <th class="col-xs-7">{{ 'summary.coverage.column.coverage' | translate }}</th>
+                  <th class="col-xs-1">{{ 'summary.coverage.column.limit' | translate }}</th>
+                  <th class="col-xs-2">{{ 'summary.coverage.column.deductible' | translate }}</th>
+                  <th class="col-xs-1">{{ 'summary.coverage.column.rate' | translate }}</th>
+                  <th class="col-xs-1">{{ 'summary.coverage.column.premium' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let coverage of lobCoverage.coverageList">
+                  <td>{{ coverage.Locale.Title }}</td>
+                  <td>{{ coverage.Limit ? (coverage.Limit | myNumberFormatter:'currency') : '' }}</td>
+                  <td>{{ formatDeductibles(coverage) }}</td>
+                  <td>{{ coverage.Rate
+                    ? (coverage.Rate | myNumberFormatter:'decimal')
+                    : '' }}</td>
+                  <td>{{ coverage.Premium
+                    ? (coverage.Premium | myNumberFormatter:'currency')
+                    : ('summary.coverage.included' | translate) }}</td>
+                </tr>
+                <!-- ALS Limit -->
+                <tr *ngIf="lobCoverage.LOBCode === 'BI' && showALSLimit">
+                  <td>{{ 'summary.coverage.ALSLimit' | translate }}</td>
+                  <td>{{ ALSLimit | myNumberFormatter:'currency' }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </accordion-section>
+
+        <!-- IndustryCode conditions -->
+        <accordion-section *ngIf="getIndustryCodeCondition().length" [isOpen]=true
+          [title]="translate.instant('summary.quoteConditions.header.title')">
+          <div class="pad-lr-80 accordion-section-content">
+            <ol class="quote-condition-container">
+              <li *ngFor="let industryCodeCondition of getIndustryCodeCondition()" class="quote-condition">
+                {{ industryCodeCondition.Locale.Description }}
+              </li>
+            </ol>
+          </div>
+        </accordion-section>
+      </accordion>
+    </div>
+    <!-- Action Buttons -->
+    <div class="row action-buttons-group">
+      <div class="col-xs-3 text-left">
+        <button class="btn secondary reverse" (click)="onBack()">{{ 'buttons.back' | translate }}</button>
+      </div>
+      <div class="col-xs-3 text-center">
+        <button class="btn secondary" (click)="sendPdfModal.show()">{{ 'buttons.sendPdf' | translate }}</button>
+      </div>
+      <div class="col-xs-3 text-center">
+        <button class="btn secondary" (click)="onBind()" [disabled]="quoteStatus !== 4">{{ 'buttons.bind' | translate }}</button>
+      </div>
+      <div class="col-xs-3 text-right">
+        <button class="btn secondary reverse" (click)="onDashboard()">{{ 'buttons.returnToDashboard' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

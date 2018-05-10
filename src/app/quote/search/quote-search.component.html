@@ -1,0 +1,66 @@
+<div class="sidebar-overlay">
+</div>
+<ng-sidebar-container style="height: 100vh">
+<!-- A sidebar -->
+<ng-sidebar [position]="sidebarPosition" [(opened)]="sidebarOpened">
+  <timeline-view (backButtonClicked)="handleTimelineBackButtonClicked()" [quoteNum]="versionHistoryQuoteNum"></timeline-view>
+</ng-sidebar>
+
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<!-- Page content -->
+<div ng-sidebar-content class="pro-nav-wrapper pad-t-100">
+  <div class="container">
+    <form [formGroup]="quoteSearchForm">
+      <div id="searchByQuoteNum">
+        <label for="quoteNumber" class="input-field-title">
+          <span class="label-text">{{ 'quoteSearch.searchByQuoteNum' | translate }}</span>
+        </label>
+        <div class="row">
+          <div class="col-xs-10">
+            <input id="quoteNumber" class="input-field-content form-control" type="text" formControlName="searchNumber" placeholder="{{'generic.enterQuoteNum' | translate}}">
+          </div>
+          <div class="col-xs-2">
+            <button class="fa fa-search rectangle-btn" aria-hidden="true" (click)="findQuoteNumber($event)"></button>
+          </div>
+        </div>
+      </div>
+      <div id="filterByDate" class="pad-tb-20">
+        <label for="fromDate" class="input-field-title">
+          <span class="label-text">{{ 'quoteSearch.filterByDate' | translate }}</span>
+        </label>
+        <div class="row">
+          <!-- From Date -->
+          <div class="col-xs-5 no-side-padding">
+            <div class="input-group has-feedback">
+              <span class="input-group-addon">{{ 'datepicker.fromDate' | translate }}</span>
+              <input type="text" readonly class="input-field-content form-control dateinput dateinput-active"
+                id="fromDate" bsDatepicker #dp="bsDatepicker" formControlName="fromDate" [bsConfig]="bsDatepickerConfig"
+                [maxDate]="maxFromDate" [outsideClick]="true" (bsValueChange)="onUpdateFromDate($event)">
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+            </div>
+          </div>
+          <!-- To Date -->
+          <div class="col-xs-5 no-side-padding">
+            <div class="input-group has-feedback">
+              <span class="input-group-addon">{{ 'datepicker.toDate' | translate }}</span>
+              <input type="text" readonly class="input-field-content form-control dateinput dateinput-active"
+                id="toDate" bsDatepicker #dp="bsDatepicker" formControlName="toDate" [bsConfig]="bsDatepickerConfig"
+                [maxDate]="maxToDate" [minDate]="minToDate" [outsideClick]="true">
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+            </div>
+          </div>
+          <!-- Filter Button -->
+          <div class="col-xs-2">
+            <button class="rectangle-btn" (click)="findQuoteByDates()">
+              {{'buttons.filter' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <ng2-smart-table *ngIf="tableInitIsReady && quoteSearch && quoteSearch.length" [settings]="settings" [source]="quoteSearch"
+      (custom)="onCustomAction($event)"></ng2-smart-table>
+  </div>
+</div>
+</ng-sidebar-container>

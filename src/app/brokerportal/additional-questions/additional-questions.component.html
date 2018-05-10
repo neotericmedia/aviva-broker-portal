@@ -1,0 +1,30 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+
+<form *ngIf="isReady && lobQuestionSectionList" [formGroup]="additionalQuestionsForm">
+  <div *ngFor="let section of lobQuestionSectionList">
+    <div *ngIf="section.subsections && section.subsections.length" class="lob-questions">
+      <div class="form-header font-style-1">{{ section.title | translate }}</div>
+      <lob-questions
+        [parentForm]="additionalQuestionsForm"
+        [lobAnswers]="lobAnswersHash[section.lobCode]"
+        [lobCode]="section.lobCode"
+        [lobSubsections]="section.subsections"
+        [ifCallFUS]="ifCallFUS"        
+        [showErrors]="showControlsErrorsIfAny">
+      </lob-questions>
+    </div>
+  </div>
+  <!-- Action Buttons -->
+  <div class="row action-buttons-group">
+    <div class="col-xs-4 text-left">
+      <button class="btn secondary" type="button" (click)="onBack()">{{ 'buttons.back' | translate }}</button>
+    </div>
+    <div class="col-xs-4 text-center">
+      <button class="btn secondary reverse" type="button" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+    </div>
+    <div class="col-xs-4 text-right">
+      <button class="btn secondary" type="button" (click)="onSave(true)">{{ 'buttons.next' | translate }}</button>
+    </div>
+  </div>
+</form>

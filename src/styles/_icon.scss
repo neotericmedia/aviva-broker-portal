@@ -1,0 +1,42 @@
+.arrow-down-blue { background-image: $arrow-down-blue }
+.arrow-up-grey { background-image: $arrow-up-grey }
+.info-icon { background-image: $info-icon }
+.profile-icon { background-image: $profile-icon }
+.calendar-icon { background-image: $calendar-icon }
+.close-icon { background-image: $close-icon }
+.close-grey-icon { background-image: $close-grey-icon }
+
+.arrow-down-blue, .arrow-up-grey, .info-icon, .profile-icon, .calendar-icon, .close-icon,
+.close-grey-icon {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-height-28 {
+  height: 28px;
+  width: 28px;
+  background-size: 100% 28px;
+}
+
+.icon-height-37 {
+  height: 37px;
+  width: 37px;
+  background-size: auto 37px;
+}
+
+.plus-icon-blue {
+  background-image: $plus-icon-blue;
+  background-position: left;
+  background-repeat: no-repeat;
+  margin-left: -5px;
+  padding-left: 30px;
+}
+
+.information-icon {
+  background-image: $information-icon;
+  background-repeat: no-repeat;
+  float: left;
+  height: 50px;
+  padding-left: 48px;
+  width: 48px;
+}

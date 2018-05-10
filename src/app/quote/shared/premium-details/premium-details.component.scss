@@ -1,0 +1,39 @@
+@import "../../../../styles/_variables";
+
+.premium-box {
+  background-color: $color-blue-00;
+  border: 1px solid $color-blue-00;
+  border-radius: 5px;
+  color: $color-grey-5c;
+  
+  table {
+    background-color: $color-white-ff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+    td {
+      padding: 20px 30px;
+
+      &.lineMe {
+        border-right: 1px solid $color-grey-97;
+      }
+
+      .right-wrap {
+          text-align: center;
+      }
+    }
+
+    .form-control:read-only {
+      background-color: $color-white-ff;
+    }
+  }
+  &-header {
+    color: $color-white-ff;
+    padding: 20px 30px;
+  }
+}
+
+.divider-hr {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

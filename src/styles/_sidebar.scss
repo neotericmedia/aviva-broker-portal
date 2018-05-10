@@ -1,0 +1,44 @@
+@import "variables";
+
+.ng-sidebar-component {
+    height: 100%;
+}
+ 
+ng-sidebar > aside {
+    height: 100%;
+    width: 30%;
+    //background: #f3f6f8;
+    background: $sidebar-background-color;
+    -webkit-box-shadow: -5px 0px 5px -3px rgba(0,0,0,0.16);
+    box-shadow: -5px 0px 5px -3px rgba(0,0,0,0.16);
+}
+
+
+.sidebar-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: #000;
+  //z-index: @zindex-sidebar-fixed - 1;
+  
+  -webkit-transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+  -moz-transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+  transition: visibility 0 linear .4s,opacity .4s cubic-bezier(.4,0,.2,1);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.sidebar-overlay.active {
+  opacity: 0.5;
+  visibility: visible;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  transition-delay: 0;
+}

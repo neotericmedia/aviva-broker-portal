@@ -1,0 +1,46 @@
+@import "../../../styles/quoter";
+
+.container {
+  font-family: source_sans_proregular, sans-serif
+}
+
+.content-wrap {
+  padding-top: 0;
+}
+
+.copied {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  background-color: $color-card-white-border;
+  opacity: 0.7;
+  color: #fff;
+}
+
+@-webkit-keyframes fadeOut { 
+  from { opacity:1; } to { opacity:0; } 
+}
+@-moz-keyframes fadeOut { 
+  from { opacity:1; } to { opacity:0; } 
+}
+@keyframes fadeOut { 
+  from { opacity:1; } to { opacity:0; } 
+}
+
+.fade-out {
+  opacity:1;
+  -webkit-animation:fadeOut ease-in 1;
+  -webkit-animation-fill-mode:forwards;
+  -webkit-animation-duration:1s;
+  -webkit-animation-delay: 10s;
+  -moz-animation:fadeOut ease-in 1;
+  -moz-animation-fill-mode:forwards;
+  -moz-animation-duration:1s;
+  -moz-animation-delay: 10s;
+  animation:fadeOut ease-in 1;
+  animation-fill-mode:forwards;
+  animation-duration:1s;
+  animation-delay: 10s;
+}
+

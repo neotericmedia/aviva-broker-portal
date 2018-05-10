@@ -1,0 +1,517 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<!-- Business Info page -->
+<div class="pro-nav-wrapper pad-t-100">
+	<div class="container">
+		<confirm-modal #guardModal
+			message="{{ guardModalQuestion }}"
+			confirmTitle="{{ 'yes' | translate }}"
+			declineTitle="{{ 'cancel' | translate }}"></confirm-modal>
+		<quote-breadcrumb step="businessInfo" [qNumber]="quoteNumber" [lobQuestionAnswers]="lobQuestionAnswers"></quote-breadcrumb>
+    <div *ngIf="copied" class="copied fade-out">{{ 'business.notifications.quoteCopied' | translate }}</div>
+    <div *ngIf="isReady">
+      <form *ngIf="showBusinessInfo" novalidate [formGroup]="businessInfoForm" class="content-wrap" autocomplete="off">
+        <business-date-quote *ngIf="isReady" [dateQuoteInfo]="dateQuoteInfo" [businessInfoService]="businessInfoService" [notifier]="notifier"
+          [parentForm]="businessInfoForm">
+        </business-date-quote>
+        <div id="broker-details">
+          <div class="form-header font-style-1">{{ 'business.broker.headTitle' | translate }}</div>
+          <!-- Broker Code and Broker Name -->
+          <div class="row pad-t-20 pad-b-15">
+            <div class="col-xs-12 col-sm-6">
+              <div class="ngx-completer-container">
+                <input id="brokerInfo" formControlName="brokerCode" [(ngModel)]="brokerInfoText" [typeahead]="brokerInfoDS" typeaheadMinLength="3"
+                  placeholder="{{ 'business.broker.placeholder' | translate }}" typeaheadOptionField="title" typeaheadOptionsLimit="10000"
+                  (typeaheadLoading)="setBrokerLoading($event)" (typeaheadNoResults)="setBrokerNoMatch($event)" (typeaheadOnSelect)="updateBroker($event)"
+                  (blur)="onBlurBroker()" autocomplete="off" class="form-control ngx-completer" typeaheadPhraseDelimiters=" ">
+              </div>
+              <div class="ngx-completer-notifier-container">
+                <div *ngIf="brokerInfoLoading === true" class="ngx-completer-notifier">
+                  {{ 'loading' | translate }}
+                </div>
+                <div *ngIf="brokerInfoNoMatch === true && businessInfoForm.controls.brokerCode.value" class="ngx-completer-notifier">
+                  {{ 'noResultsFound' | translate }}
+                </div>
+              </div>
+              <div *ngIf="showControlsErrorsIfAny">
+                <div *ngFor="let err of formErrors.brokerCode" class="alert alert-danger">
+                  {{ 'business.details.errors.brokerCode.' + err | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider-hr"></div>
+          <!-- Brokerage Contact Name and Email -->
+          <div class="row pad-tb-15">
+            <div class="col-xs-12 col-sm-6">
+              <label for="brokerContactName" class="input-field-title">
+                <span class="label-text">{{ 'business.broker.contactName' | translate }}</span>
+              </label>
+              <input id="brokerContactName" [value]="businessInfo.brokerContactName" class="form-control input-field-content" type="text"
+                max="100" name="brokerContactName" formControlName="brokerContactName">
+              <div *ngIf="showControlsErrorsIfAny">
+                <div *ngFor="let err of formErrors.brokerContactName" class="alert alert-danger">
+                  {{ 'business.details.errors.brokerContactName.' + err | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <label for="brokerContactEmail" class="input-field-title">{{ 'business.broker.contactEmail' | translate }}</label>
+              <input id="brokerContactEmail" [value]="businessInfo.brokerContactEmail" class="form-control input-field-content" type="email"
+                max="100" name="brokerContactEmail" formControlName="brokerContactEmail">
+              <div *ngIf="showControlsErrorsIfAny">
+                <div *ngFor="let err of formErrors.brokerContactEmail" class="alert alert-danger">
+                  {{ 'invalidEmail' | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="form-business-details">
+            <div class="form-header font-style-1">{{ 'business.details.headTitle' | translate }}</div>
+            <div class="form-group mr-b-0 clearfix">
+              <!-- Business Setup -->
+              <div class="pad-tb-15">
+                <label for="businessType" class="input-field-title">{{ 'business.details.title.businessSetUp' | translate }}</label>
+                <div>
+                  <div class="button-group">
+                    <button *ngFor="let btn of businessSetup; let isFirst = first; let i = index" class="btn-padding-1"
+                      [ngClass]="{'selected': btn.selected, 'unselected': !btn.selected}" (click)="onSelectBusinessSetup(btn.id)">
+                      <span *ngIf="!isFirst && !btn.selected && !businessSetup[i-1].selected" class="divider-line"></span>
+                      <span>{{ 'business.details.options.businessSetUp.' + btn.id | translate }}</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="showControlsErrorsIfAny">
+                  <div *ngFor="let err of formErrors.businessSetup" class="alert alert-danger">
+                    {{ 'business.details.errors.businessSetup.' + err | translate }}
+                  </div>
+                </div>
+              </div>
+              <div class="divider-hr"></div>
+              <!-- Legal Name -->
+              <div class="row pad-tb-15">
+                <div class="col-xs-12 col-sm-6">
+                  <label for="namedInsured" class="input-field-title">{{ 'business.details.title.namedInsured' | translate }}</label>
+                  <input class="form-control input-field-content" formControlName="namedInsured" maxlength="50" spellcheck="false" (blur)="onBlurBusinessName($event)">
+                  <div *ngIf="showControlsErrorsIfAny">
+                    <div *ngFor="let err of formErrors.namedInsured" class="alert alert-danger">
+                      {{ 'business.details.errors.namedInsured.' + err | translate }}
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!showOperatingName" class="col-xs-12 col-sm-3">
+                  <button class="btn secondary reverse btn-label" (click)="onSelectOperating()">
+                    <span class="bold plus-icon-blue">{{ "Add additional insured" }}</span>
+                  </button>
+                </div>
+              </div>
+
+              <div *ngIf="showOperatingName">
+                <div class="divider-hr"></div>
+                <div class="row pad-tb-15">
+                  <!-- Relationship to the Insured -->
+                  <div class="col-xs-12 col-sm-6">
+                    <label for="relationToInsured" class="input-field-title">{{ 'business.details.title.relationToInsured' | translate }}</label>
+                    <select class="form-control" name="relationToInsured" formControlName="relationToInsured">
+                      <option *ngFor="let opt of relationOptions" [value]="opt.id">{{ 'business.details.options.relationToInsured.' + opt.id | translate }}</option>
+                    </select>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors.relationToInsured" class="alert alert-danger">
+                        {{ 'business.details.errors.relationToInsured.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Operating Name -->
+                  <div class="col-xs-12 col-sm-4">
+                    <label for="operatingName" class="input-field-title">{{ 'business.details.title.operatingname' | translate }}</label>
+                    <input id="operatingName" class="form-control input-field-content" maxlength="50" spellcheck="false" type="text" name="operatingName"
+                      placeholder="{{ 'business.details.placeholder.operatingName' | translate }}" formControlName="operatingName">
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors.operatingName" class="alert alert-danger pad-b-0">
+                        {{ 'business.details.errors.operatingName.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="showOperatingName" class="col-xs-12 col-sm-2">
+                    <button class="btn secondary reverse btn-label" (click)="onSelectOperating()">
+                      <span class="bold">{{ "Remove" }}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider-hr"></div>
+              <div class="pad-t-15">
+                <label class="input-field-title" [ngClass]="{'input-field-title-bold': !showCompanyAddressAutoCompleter}">
+                  {{ 'business.details.title.addressAutoCompleter.locationAddress' | translate }}
+                </label>
+              </div>
+              <!-- Company Address AutoCompleter-->
+              <div *ngIf="showCompanyAddressAutoCompleter" class="pad-b-15">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="ngx-completer-container">
+                      <input id="companyAddress" formControlName="locationAddressAutoCompleter"
+                        [(ngModel)]="addressInfoText"
+                        [typeahead]="addressInfoDS"
+                        typeaheadMinLength="3"
+                        placeholder="{{ 'business.details.placeholder.address' | translate }}"
+                        typeaheadOptionField="title"
+                        (typeaheadLoading)="setAddressLoading($event)"
+                        (typeaheadNoResults)="setAddressNoMatch($event)"
+                        (typeaheadOnSelect)="updateAddress($event)"
+                        typeaheadWaitMs="300"
+                        typeaheadPhraseDelimiters=" "
+                        (blur)="onBlurAddress()"
+                        autocomplete="off"
+                        class="form-control ngx-completer">
+                    </div>
+                    <div class="ngx-completer-notifier-container">
+                      <div *ngIf="addressInfoLoading === true" class="ngx-completer-notifier">
+                        {{ 'loading' | translate }}
+                      </div>
+                      <div *ngIf="addressInfoNoMatch === true && businessInfoForm.controls.locationAddressAutoCompleter.value"
+                        class="ngx-completer-notifier">
+                        {{ 'noResultsFound' | translate }}
+                      </div>
+                    </div>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngIf="businessInfoForm.get('locationAddressAutoCompleter').invalid" class="alert alert-danger">
+                        {{ 'business.details.errors.addressAutoCompleter.required' | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="information-icon"></div>
+                    <div class="tooltip-label">{{ 'business.details.tooltip.address' | translate }}</div>
+                  </div>
+                </div>
+                <button id="changeLocationDetails" class="btn-underline pad-t-10" (click)="changeAddressDetails('location')">
+                  {{ 'business.details.title.addressAutoCompleter.changeAddress' | translate }}
+                </button>
+              </div>
+              <!-- Company Address Details -->
+              <address-details *ngIf="!showCompanyAddressAutoCompleter" [form]="businessInfoForm.controls.companyAddress" [provinceOptions]="provinceOptions"
+                [showErrors]="showControlsErrorsIfAny" (fieldChanged)="checkIfCallGDMService()" [isLocationDetails]=true></address-details>
+              <div class="divider-hr"></div>
+              <!-- If is same as mailing address -->
+              <div class="row pad-tb-15">
+                <div class="col-xs-12 col-sm-6">
+                  <label class="input-field-title">{{ 'business.details.title.mailingAddressQuestion' | translate }}</label>
+                  <div>
+                    <div class="button-group btn-block">
+                      <button id="mailingAddress_yes" name="mailingAddress_yes" (click)="onSelectMailingAddress(false)"
+                        [ngClass]="{'selected': !businessInfo.isMailingDifferent, 'unselected': businessInfo.isMailingDifferent}">
+                        <span>{{ 'yes' | translate }}</span>
+                      </button>
+                      <button id="mailingAddress_no" name="mailingAddress_no" (click)="onSelectMailingAddress(true)"
+                        [ngClass]="{'selected': businessInfo.isMailingDifferent, 'unselected': !businessInfo.isMailingDifferent}">
+                        <span>{{ 'no' | translate }}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="businessInfo.isMailingDifferent">
+                <div class="divider-hr"></div>
+                <div class="pad-t-15">
+                  <label class="input-field-title" [ngClass]="{'input-field-title-bold': !showMailingAddressAutoCompleter}">
+                    {{ 'business.details.title.addressAutoCompleter.mailingAddress' | translate }}
+                  </label>
+                </div>
+                <!-- Mailing Address AutoCompleter -->
+                <div class="pad-b-15" *ngIf="showMailingAddressAutoCompleter">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="ngx-completer-container">
+                        <input id="mailingAddress" formControlName="mailingAddressAutoCompleter"
+                          [(ngModel)]="mailingInfoText"
+                          [typeahead]="mailingInfoDS"
+                          typeaheadMinLength="3"
+                          placeholder="{{ 'business.details.placeholder.mailingAddress' | translate }}"
+                          typeaheadOptionField="title"
+                          (typeaheadLoading)="setMailingLoading($event)"
+                          (typeaheadNoResults)="setMailingNoMatch($event)"
+                          (typeaheadOnSelect)="updateMailingAddress($event)"
+                          typeaheadWaitMs="300"
+                          typeaheadPhraseDelimiters=" "
+                          (blur)="onBlurMailingAddress()"
+                          class="form-control ngx-completer">
+                      </div>
+                      <div class="ngx-completer-notifier-container">
+                        <div *ngIf="mailingInfoLoading === true" class="ngx-completer-notifier">
+                          {{ 'loading' | translate }}
+                        </div>
+                        <div *ngIf="mailingInfoNoMatch === true && businessInfoForm.controls.mailingAddressAutoCompleter.value"
+                          class="ngx-completer-notifier">
+                          {{ 'noResultsFound' | translate }}
+                        </div>
+                      </div>
+                      <div *ngIf="showControlsErrorsIfAny">
+                        <div *ngIf="businessInfoForm.get('mailingAddressAutoCompleter').invalid" class="alert alert-danger">
+                          {{ 'business.details.errors.addressAutoCompleter.required' | translate }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <div class="information-icon"></div>
+                      <div class="tooltip-label">{{ 'business.details.tooltip.address' | translate }}</div>
+                    </div>
+                  </div>
+                  <button id="changeMailingDetails" class="btn-underline pad-t-10" (click)="changeAddressDetails('mailing')">
+                    {{ 'business.details.title.addressAutoCompleter.changeAddress' | translate }}
+                  </button>
+                </div>
+                <!-- Mailing Address Details -->
+                <address-details *ngIf="!showMailingAddressAutoCompleter" [form]="businessInfoForm.controls.mailingAddress"
+                  [provinceOptions]="provinceOptions" [showErrors]="showControlsErrorsIfAny"></address-details>
+              </div>
+
+              <industry-rating *ngIf="isReady && showIndustryRating"
+                [industryRatingInfo]="industryRatingInfo"
+                [onUpdateIndustryRatingInfo]="togglePayrollRevenue"
+                [parentForm]="businessInfoForm"
+                [showErrors]="showControlsErrorsIfAny">
+              </industry-rating>
+
+              <!-- Annual Payroll or Revenue displayed conditionally -->
+              <div class="divider-hr"></div>
+              <div class="pad-tb-15">
+                <div *ngIf="industryRatingInfo.ratingBasis !== 'PY'" class="row">
+                  <div *ngFor="let field of revenueFields"  class="col-xs-12 col-sm-3">
+                    <label for="{{ field }}" class="input-field-title">
+                      {{ 'business.details.title.' + field | translate }}
+                    </label>
+                    <number-input id="{{ field }}" type="currency" name="{{ field }}"
+                      formControlName="{{ field }}"></number-input>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors[field]" class="alert alert-danger">
+                        {{ 'business.details.errors.' + field + '.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="industryRatingInfo.ratingBasis === 'PY'" class="row">
+                  <div *ngFor="let field of payrollFields" class="col-xs-12 col-sm-3">
+                    <label for="{{ field }}" class="input-field-title">
+                      {{ 'business.details.title.' + field | translate }}
+                    </label>
+                    <number-input id="{{ field }}" type="currency" name="{{ field }}"
+                      formControlName="{{ field }}"></number-input>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors[field]" class="alert alert-danger">
+                        {{ 'business.details.errors.' + field + '.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider-hr"></div>
+              <div class="row pad-tb-15">
+                <!-- Years in business -->
+                <div class="col-xs-12 col-sm-3">
+                  <label for="yearsOfBusiness" class="input-field-title">{{ 'business.details.title.yearsInBusiness' | translate }}</label>
+                  <input disable-mouse-wheel id="yearsOfBusiness" class="form-control input-field-content" type="number" min="0" max="100"
+                    name="yearsOfBusiness" formControlName="yearsInBusiness" (change)="onChangeYearsInBusiness($event)">
+                  <div *ngIf="showControlsErrorsIfAny">
+                    <div *ngFor="let err of formErrors.yearsInBusiness" class="alert alert-danger">
+                      {{ 'business.details.errors.yearsInBusiness.' + err | translate }}
+                    </div>
+                  </div>
+                </div>
+                <!-- Years of Relevant experience -->
+                <div *ngIf="showYearsInRelevantBusiness" class="col-xs-12 col-sm-3">
+                  <label for="yearsInRelevantBusiness" class="input-field-title">{{ 'business.details.title.yearsInRelevantBusiness' | translate }}</label>
+                  <input disable-mouse-wheel id="yearsInRelevantBusiness" class="form-control input-field-content" type="number" min="0" max="100"
+                    name="yearsInRelevantBusiness" formControlName="yearsInRelevantBusiness">
+                  <div *ngIf="showControlsErrorsIfAny">
+                    <div *ngFor="let err of formErrors.yearsInRelevantBusiness" class="alert alert-danger">
+                      {{ 'business.details.errors.yearsInRelevantBusiness.' + err | translate }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider-hr"></div>
+              <div class="row pad-tb-15">
+                <div class="col-xs-12 col-sm-6">
+                  <label for="wasPolicyCancelled" class="input-field-title">{{ 'business.details.title.wasPolicyCancelled' | translate }}</label>
+                  <div class="button-group btn-block">
+                    <button id="wasPolicyCancelled_yes" name="wasPolicyCancelled_yes" (click)="onSelectIfPolicyCancelled(true)"
+                      [ngClass]="{'selected': businessInfo.wasPolicyCancelled, 'unselected': !businessInfo.wasPolicyCancelled}">
+                      <span>{{ 'yes' | translate }}</span>
+                    </button>
+                    <button id="wasPolicyCancelled_no" name="wasPolicyCancelled_no" (click)="onSelectIfPolicyCancelled(false)"
+                      [ngClass]="{'selected': !businessInfo.wasPolicyCancelled, 'unselected': businessInfo.wasPolicyCancelled}">
+                      <span>{{ 'no' | translate }}</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="showControlsErrorsIfAny">
+                  <div *ngFor="let err of formErrors.wasPolicyCancelled" class="alert alert-danger">
+                    {{ 'business.details.errors.wasPolicyCancelled.' + err | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Claims -->
+          <div class="form-header font-style-1"> {{ 'business.claims.headTitle' | translate }}</div>
+          <!-- Number of claims -->
+          <div class="row pad-tb-15">
+            <div class="col-xs-12 col-sm-6">
+              <label for="NumOfClaims" class="input-field-title">{{ 'business.details.title.numClaims' | translate }}</label>
+              <div>
+                <div class="button-group btn-block">
+                  <button *ngFor="let btn of claimOptions; let isFirst = first;"
+                    [ngClass]="{'selected': btn.selected, 'unselected': !btn.selected}" (click)="onSelectClaimsNumber(btn.value)">
+                    <span *ngIf="!isFirst && !btn.selected && !claimOptions[btn.value].selected" class="divider-line"></span>
+                    <span>{{ 'business.details.options.claimOptions.' + btn.value | translate }}</span>
+                  </button>
+                </div>
+              </div>
+              <div *ngIf="showControlsErrorsIfAny">
+                <div *ngFor="let err of formErrors.numOfClaims" class="alert alert-danger">
+                  {{ 'business.details.errors.numOfClaims.' + err | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- If is over claim limit -->
+          <div *ngIf="overClaimLimit">
+            <div class="divider-hr"></div>
+            <div class="row pad-tb-15">
+              <div class="col-xs-12 col-sm-6">
+                <label for="overClaimLimit" class="input-field-title" [innerHTML]="'business.details.title.overClaimLimit' | translate"></label>
+                <div>
+                  <div class="button-group btn-block">
+                    <button id="overClaimLimit_yes" name="overClaimLimit_yes" (click)="onSelectOverClaimLimit(true)"
+                      [ngClass]="{'selected': businessInfo.overClaimLimit, 'unselected': !businessInfo.overClaimLimit}">
+                      <span>{{ 'yes' | translate }}</span>
+                    </button>
+                    <button id="overClaimLimit_no" name="overClaimLimit_no" (click)="onSelectOverClaimLimit(false)"
+                      [ngClass]="{'selected': !businessInfo.overClaimLimit, 'unselected': businessInfo.overClaimLimit}">
+                      <span>{{ 'no' | translate }}</span>
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="showControlsErrorsIfAny">
+                  <div *ngFor="let err of formErrors.overClaimLimit" class="alert alert-danger">
+                    {{ 'business.details.errors.overClaimLimit.' + err | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="claims && claims.length" formGroupName="claims">
+            <div *ngFor="let claim of claims; index as i">
+              <div class="form-header font-style-1">{{ 'business.claims.claimTitle' | translate }}&nbsp;{{ i+1 }}</div>
+              <div formGroupName="claim-{{i}}">
+                <div class="row pad-tb-15">
+                  <div class="col-xs-12 col-sm-6">
+                    <label for="claim-{{i}}-lob" class="input-field-title">{{ 'business.claims.title.lineOfBusiness' | translate }}</label>
+                    <select id="claim-{{i}}-lob" class="form-control input-field-content" name="claim-{{i}}-lob" formControlName="lineOfBusiness"
+                      (change)="onUpdateClaimLOB($event, claim, i)">
+                      <option *ngFor="let option of claimQuestionsOptions?.LOB" [value]="option.id">{{option.Locale.Description}}</option>
+                    </select>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors.claims[i].lineOfBusiness" class="alert alert-danger">
+                        {{ 'business.details.errors.claims.lineOfBusiness.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3">
+                    <label for="claim-{{i}}-status" class="input-field-title">
+                      {{ 'business.claims.title.status' | translate }}
+                    </label>
+                    <select id="claim-{{i}}-status" class="form-control input-field-content"
+                      name="claim-{{i}}-status" formControlName="status">
+                      <option *ngFor="let option of claimQuestionsOptions?.Status" [value]="option.id">
+                        {{option.Locale.Description}}
+                      </option>
+                    </select>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors.claims[i].status" class="alert alert-danger">
+                        {{ 'business.details.errors.claims.status.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="divider-hr"></div>
+                <div class="row pad-tb-15">
+                  <div class="col-xs-12 col-sm-6">
+                    <label for="claim-{{i}}-lossDate" class="input-field-title">
+                      <span class="label-text">{{ 'business.claims.title.lossDate' | translate }}</span>
+                    </label>
+                    <div class="has-feedback">
+                      <input type="text" readonly id="claim-{{i}}-lossDatePicker"
+                        class="form-control icon-r-calendar dateinput input-field-content dateinput dateinput-active"
+                        [bsValue]="claim.lossDate" [outsideClick]="true" bsDatepicker [bsConfig]="bsDatepickerConfig"
+                        [maxDate]="maxClaimDate" value="{{ claim.lossDate ? formatDate(claim.lossDate) : null }}"
+                        (bsValueChange)="onUpdateLossDate($event, claim, i)">
+                      <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+                    </div>
+                    <div *ngIf="showControlsErrorsIfAny">
+                      <div *ngFor="let err of formErrors.claims[i].lossDate" class="alert alert-danger">
+                        {{ 'business.details.errors.claims.lossDate.' + err | translate }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3">
+                    <div *ngIf="getClaimLobTypeByIdx(i) !== 'casualty'">
+                      <label for="claim-{{i}}-losstype-property" class="input-field-title">
+                        {{ 'business.claims.title.lossType' | translate }}
+                      </label>
+                      <select id="claim-{{i}}-losstype-property" class="form-control input-field-content"
+                        name="claim-{{i}}-losstype-property" formControlName="lossType">
+                        <option *ngFor="let option of claimQuestionsOptions?.LossType.Property"
+                          [value]="option.id">{{option.Locale.Description}}</option>
+                      </select>
+                    </div>
+                    <div *ngIf="getClaimLobTypeByIdx(i) === 'casualty'">
+                      <label for="claim-{{i}}-losstype-casualty" class="input-field-title">
+                        {{ 'business.claims.title.lossType' | translate }}
+                      </label>
+                      <select id="claim-{{i}}-losstype-casualty" class="form-control input-field-content"
+                        name="claim-{{i}}-losstype-casualty" formControlName="lossType">
+                        <option *ngFor="let option of claimQuestionsOptions?.LossType.Casualty"
+                          [value]="option.id">{{option.Locale.Description}}</option>
+                      </select>
+                      <div *ngIf="showControlsErrorsIfAny">
+                        <div *ngFor="let err of formErrors.claims[i].lossType" class="alert alert-danger">
+                          {{ 'business.details.errors.claims.lossType.' + err | translate }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="industryRatingInfo.industryCode">
+            <coverage-choices [industryCode]="industryRatingInfo.industryCode" formControlName="offeringAndLobCodes">
+            </coverage-choices>
+          </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="row action-buttons-group">
+          <div class="col-xs-6 text-left">
+            <button class="btn secondary reverse" type="button" (click)="onSave()">{{ 'buttons.save' | translate }}</button>
+          </div>
+          <div class="col-xs-6 text-right">
+            <button class="btn secondary" type="button" (click)="onSave(true)">{{ 'buttons.next' | translate }}</button>
+          </div>
+        </div>
+      </form>
+
+      <div *ngIf="showLobQuestions">
+        <additional-questions [businessInfo]="businessInfo" (onClickBack)="togglePageView()"></additional-questions>
+      </div>
+    </div>
+  </div>
+</div>

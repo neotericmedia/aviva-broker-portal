@@ -1,0 +1,76 @@
+@import "variables";
+
+.ngx-completer-container {
+  input.ngx-completer {
+    display: block;
+    height: $input-height;
+    border-radius: $input-border-radius;
+    font-size: 16px;
+    font-family: "source_sans_prolight";
+    color: $input-color;
+    padding: 5px 10px;
+    box-shadow: none;
+    border: 1px solid $input-border-color;
+    width: 100%;
+  }
+
+  .dropdown {
+    &.open {
+      position: relative !important;
+      display: block !important;
+      top: 0 !important;
+      left: 0 !important;
+
+      .dropdown-menu {
+        width: 100%;
+        max-height: 400px;
+        overflow: auto;
+        z-index: 2;
+        margin-left: 0;
+        padding-left: 0;
+
+        li {
+          height: 40px;
+          border-bottom: 1px solid $input-border-color;
+
+          a {
+            padding: 10px 20px;
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ngx-completer-container.industry-info {
+  .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: $color-blue-e5;
+  }
+  .dropdown.open .dropdown-menu li {
+    height: 60px;
+    &:last-child {
+      border-bottom: none;
+    }
+    a {
+      padding: 8px 20px 5px 20px;
+    }
+  }
+}
+
+.ngx-completer-notifier-container {
+  height: 0;
+  z-index: 2;
+}
+
+.ngx-completer-notifier {
+  height: 40px;
+  border: 1px solid $input-border-color;
+  border-radius: $input-border-radius;
+  padding: 8px 10px;
+  color: $color-grey-5c;
+  display: block;
+  position: relative;
+  background: $color-white-ff;
+  z-index: 2;
+}

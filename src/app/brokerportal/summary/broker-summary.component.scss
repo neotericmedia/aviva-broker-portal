@@ -1,0 +1,183 @@
+@import "../../../styles/_variables";
+
+body {
+  color: $color-grey-5c;
+}
+
+.btn.secondary {
+  margin-right: 0px;
+}
+
+.smallBtn {
+  padding: 8px 20px 8px 12px;
+}
+
+.lrgFont {
+  font-size: 2em;
+}
+
+.pad-tb-10 {
+  padding-bottom: 10px;
+}
+
+.block {
+  border-bottom: 1px dashed $color-grey-77;
+  border-right: 1px solid $color-grey-77;
+  display: block;
+  overflow: hidden;
+  padding: 20px 0px 30px 0px;
+}
+
+.editCovUI {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid #ccc; 
+  border-radius: 7px
+}
+
+.block:first-child {
+  padding: 0px 0px 30px 0px;
+}
+
+.broker-business-details {
+  border: 1px solid $color-blue-e5;
+  display: block;
+  margin: 25px 0px 25px 0px;
+  font-family: source_sans_prolight, sans-serif;
+  .title {
+    display: block;
+    font-family: "source_sans_proregular";
+    background: $color-blue-e5;
+    padding: 17px 0 17px 30px;
+    font-size: 14px;
+  }
+  .details-interior {
+    padding: 20px 30px 20px 30px;
+    font-size: 14px;
+    color: $color-grey-aa;
+  }
+  .bld {
+    font-family: "source_sans_proregular";
+    font-size: 1.20em;
+    color: $color-black
+  }
+}
+
+.block:last-child {
+  border-bottom: none;
+}
+
+.card {
+  float: none;
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -ms-border-radius: 7px;
+  h2.title {
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+  }
+  .title {
+    font-family: source_sans_prolight, sans-serif;
+    letter-spacing: 1px;
+  }
+}
+
+h2.title {
+  background: $color-cyan-9a;
+  color: $color-white-ff;
+  margin-top: 0px;
+  padding: 20px 0px 20px 40px;
+}
+
+.card-details {
+  padding: 0px 20px 0px 20px;
+  overflow: hidden;
+}
+
+.actionButtons {
+  border-top: solid 3px $color-grey-cc;
+  padding-top: 40px;
+}
+
+.premium-details {
+  padding: 0 0px;
+  border: 1px solid $color-cyan-9a;
+
+  h2.title {
+    background: $color-cyan-9a;
+    color: $color-white-ff;
+    margin-top: 0px;
+    padding: 20px 0px 20px 40px;
+  }
+
+  .date-and-quote {
+    padding-right: 20px;
+  }
+}
+
+.pad-lr-80 {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.quote-condition-container {
+  padding-left: 15px;
+  margin: 0;
+
+  .quote-condition {
+    font-family: source_sans_proregular, sans-serif;
+    font-size: 16px;
+    padding-bottom: 15px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.info-deviation {
+  margin-top: 11px;
+
+  .input-group {
+    span,
+    input {
+      height: 100%;
+      max-height: 50px;
+    }
+    input {
+      line-height: 23px;
+      border-right: 0;
+    }
+  }
+
+  .alert-slim {
+    position: absolute;
+    top: 100%;
+    margin: 0;
+    padding: 4px 12px;
+    width: calc(100% - 30px);
+    color: $color-white-ff;
+    background-color: $color-red-b9;
+  }
+}
+
+table.table-striped {
+  font-family: "source_sans_proregular";
+  font-size: 16px;
+  line-height: 20px;
+  th {
+    padding: 0px 30px 20px 30px;
+    &:first-child {
+      text-align: left;
+    }
+  }
+  td {
+    padding: 20px 30px;
+  }
+}
+
+.divider-hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

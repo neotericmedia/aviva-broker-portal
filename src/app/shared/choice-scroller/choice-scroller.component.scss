@@ -1,0 +1,17 @@
+@import "../../../styles/_variables";
+
+.button-group {
+  width: 100%;
+}
+
+.choices:first-child .info-title {
+  padding: 10px 0 10px 0;
+}
+
+.choices .info-title {
+  padding: 35px 0 10px 0;
+}
+
+button:first-child .divider-line {
+  display: none
+}

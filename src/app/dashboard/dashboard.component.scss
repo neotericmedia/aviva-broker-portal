@@ -1,0 +1,133 @@
+@import "../../styles/variables";
+.panel {
+    margin-bottom: 23px;
+    background-color: $color-white-ff;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 15px 1px rgba(113, 106, 202, 0.08);
+    -moz-box-shadow: 0 1px 15px 1px rgba(113, 106, 202, .08);
+    box-shadow: 0 1px 15px 1px rgba(113, 106, 202, .08);
+    background-color: $color-white-ff;
+    transition: -webkit-transform .3s, box-shadow .3s, opacity .3s;
+}
+
+.panel-title {
+    border-bottom: 1px solid $color-grey-de;
+    padding: 5px;
+    padding-left: 15px;
+    position: relative;
+    h4 {
+        color: $color-grey-57;
+        margin-bottom: 2.9px;
+    }
+    h5 {
+        color: $color-grey-a6;
+        margin-top: 0px;
+        padding-bottom: 5px;
+        font-weight: 300;
+    }
+}
+
+.panel:hover {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, .1);
+}
+
+.table_container {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+
+.table_head {
+    display: table-header-group;
+}
+
+.table_row {
+    display: table-row;
+    h5,
+    h6 {
+        color: $color-grey-a6;
+    }
+}
+
+.table_cell {
+    display: table-cell;
+}
+
+.table_percentage {
+    color: $color-purple-71;
+}
+
+.table_left {
+    display: table-cell;
+    text-align: left;
+}
+
+.table_right {
+    display: table-cell;
+    text-align: right;
+}
+
+#container {
+    display: table;
+}
+
+#row {
+    display: table-row;
+}
+
+#left,
+#right,
+#middle {
+    display: table-cell;
+}
+
+.bar-chart-dimension,
+.pie-chart-dimension {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    height: 250px;
+}
+
+@media only screen and (max-width: 440px) {
+    .bar-chart-dimension,
+    .pie-chart-dimension {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .bar-chart-dimension {
+        width: 400px;
+    }
+    .pie-chart-dimension {
+        width: 219px;
+        height: 219px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .bar-chart-dimension {
+        width: 292px;
+    }
+    .pie-chart-dimension {
+        width: 171px;
+        height: 171px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .bar-chart-dimension {
+        width: 358px;
+    }
+    .pie-chart-dimension {
+        width: 212px;
+        height: 212px;
+    }
+}

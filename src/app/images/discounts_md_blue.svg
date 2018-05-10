@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="41px" height="39px" viewBox="0 0 41 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_discounts</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M2.44090091,20.9063495 L0,20.0415454 L0,15.1970263 L2.52589522,14.49941 C2.52589522,14.49941 3.42907642,9.05114441 8.94027973,5.44887181 L5.50022877,0.450904764 C5.50022877,0.450904764 10.2783562,-1.58571456 14.3690573,2.99774694 C14.3690573,2.99774694 27.3295208,-0.720564122 34.0636847,11.1277133 C34.0636847,11.1277133 36.2470342,10.3463877 36.9074913,12.408293 C36.9074913,12.408293 37.5483343,14.3676688 35.4566339,14.9962393 C35.4566339,14.9962393 37.4785175,21.863407 31.5689618,28.096462 L31.1535638,35 L27.458063,35 L26.8730266,31.5279676 C26.8730266,31.5279676 19.8411492,35.4360968 11.5422962,31.7846377 L11.0003408,35 L7.30495668,35 L6.92680209,28.7147565 C6.92680209,28.7147565 3.50648195,25.8799542 2.44090091,20.9063495 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1.8" y="-1.8" width="40.6" height="38.6">
+            <rect x="-1.8" y="-1.8" width="40.6" height="38.6" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Discounts" transform="translate(-171.000000, -57.000000)" stroke="#006AC3">
+            <g id="Driver---Details---Desktop" transform="translate(130.000000, 30.000000)">
+                <g id="icon_discounts" transform="translate(43.000000, 29.000000)">
+                    <use id="Stroke-1" mask="url(#mask-2)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-1"></use>
+                    <path d="M11,14.5 C11,15.3284036 10.3284036,16 9.5,16 C8.67159643,16 8,15.3284036 8,14.5 C8,13.6715964 8.67159643,13 9.5,13 C10.3284036,13 11,13.6715964 11,14.5 Z" id="Stroke-3" stroke-width="1.8"></path>
+                    <path d="M19,7.09238073 C19,7.09238073 21.7601409,6.36358415 25,9" id="Stroke-5" stroke-width="1.8" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

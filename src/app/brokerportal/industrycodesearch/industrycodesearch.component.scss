@@ -1,0 +1,119 @@
+@import "../../../styles/_variables";
+
+.pad-lr-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.title-text {
+  color: $color-grey-5e;	
+  font-family: "source_sans_proregular";	
+  font-size: 30px;	
+  line-height: 38px;
+}
+
+.subtitle-text {
+  color: $color-grey-5e;
+  font-family: "source_sans_proregular";	
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  width: 600px;
+}
+
+.search-result-heading {
+  &-sm {
+  color: $color-grey-77;
+  font-family: "source_sans_proregular";
+  font-size: 12px;
+  line-height: 20px;
+  }
+  &-lg {
+  color: $color-grey-44;
+  font-family: "source_sans_proregular";
+  font-size: 18px;
+  line-height: 20px;
+  }
+}
+
+.right-column-title {
+  font-family: "source_sans_proregular";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  text-align: center;
+}
+
+.right-box {
+  background:$color-grey-f9;
+  border-bottom: 2px solid $color-grey-cc;
+  padding-right: 35px;
+  padding-left: 35px;
+  text-align: center;
+}
+
+.right-box-align-left {
+  @extend .right-box;
+  text-align: left;
+}
+
+.click-btn {
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
+  width: 80%;
+}
+
+.contact-us-text {
+  font-family: "source_sans_proregular";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 23px;
+  text-align: left;
+}
+
+.contact-us-phone {
+  color: $color-grey-5c;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 23px;
+  text-align: left;
+}
+
+.contact-us-description {
+  font-family: "source_sans_proregular";
+  color: $color-grey-5c;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  text-align: left;
+}
+
+.restrictions {
+  border-radius: 2px 2px 0 0;	
+  background-color: $color-grey-e5;
+}
+
+.restrictions-frame {
+  border: 1px solid $color-grey-ee;
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+}
+
+.restrictions-text {
+  padding-left: 10px;
+  	color: $color-grey-5c;	
+  font-family: "source_sans_proregular";	
+  font-size: 14px;	
+  line-height: 18px;
+}
+
+.restrictions-divider {
+  border-bottom: 1px dotted  $color-grey-97;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.selected-text {
+  border-bottom: 1px solid $color-grey-97;
+}

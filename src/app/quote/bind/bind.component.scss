@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+
+.add-form-btn {
+  span:first-child {
+    color: $color-white-ff;
+    height: 40px;
+    width: 40px;
+    border: 1px solid $color-white-ff;
+    border-radius: 20px;
+    i {
+      top: 12px;
+      left: 13px;
+    }
+  }
+  span:nth-child(2) {
+    margin-left: 13px;
+    line-height: 24px;
+  }
+}

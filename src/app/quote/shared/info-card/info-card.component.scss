@@ -1,0 +1,17 @@
+@import "../../../../styles/quoter";
+
+.card-box {
+  border: 1px solid $color-blue-00;
+  border-radius: 5px;
+  
+  .header {
+    background-color: $color-blue-00;
+    margin-top:0px; 
+    color: $color-white-ff; 
+    padding: 20px 30px; 
+  }
+  
+  .content {
+    padding: 20px 30px;
+  }
+}

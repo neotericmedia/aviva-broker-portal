@@ -1,0 +1,42 @@
+<div [formGroup]="addressForm">
+  <!-- Address AutoCompleter-->
+  <div *ngIf="ifShowAutoCompleter">
+    <div class="pad-t-20">
+      <label for="addressAutoCompleter" class="input-field-title">
+        {{ 'generic.address.title.locationAddress' | translate }}
+      </label>
+      <span class="info-icon icon-height-28 pull-right" tooltip="{{ 'generic.tooltip.address' | translate }}" placement="left"></span>
+    </div>
+    <div class="fullWidth ngx-completer-container">
+      <input id="addressAutoCompleter" class="form-control ngx-completer" formControlName="addressAutoCompleter" 
+        [(ngModel)]="addressInfoText" [typeahead]="addressInfoDS" typeaheadMinLength="3" typeaheadWaitMs="300"  
+        placeholder="{{ 'generic.placeholder.addressAutoCompleter' | translate }}" typeaheadOptionField="title"
+        (typeaheadLoading)="setAddressLoading($event)" (typeaheadNoResults)="setAddressNoMatch($event)"
+        (typeaheadOnSelect)="updateAddress($event)" (blur)="onBlurAddress()" typeaheadPhraseDelimiters=" ">
+    </div>
+    <div class="ngx-completer-notifier-container">
+      <div *ngIf="addressInfoLoading === true" class="ngx-completer-notifier">
+        {{ 'loading' | translate }}
+      </div>
+      <div *ngIf="addressInfoNoMatch === true && addressForm.value.addressAutoCompleter" class="ngx-completer-notifier">
+        {{ 'noResultsFound' | translate }}
+      </div>
+    </div>
+    <div *ngIf="showErrors">
+      <div *ngIf="addressForm.get('addressAutoCompleter').invalid" class="alert alert-danger">
+        {{ 'generic.required' | translate }}
+      </div>
+    </div>
+    <button id="changeLocationDetails" class="btn-underline pad-t-10" (click)="changeAddressDetails()">
+      {{ 'generic.address.changeAddress' | translate }}
+    </button>
+  </div>
+  <!-- Address Individual Fields -->
+  <div [hidden]="ifShowAutoCompleter">
+    <address-fields [parentForm]="addressForm" [matchedAddress]="matchedAddress"
+      [showErrors]="showErrors" [savedAddress]="savedAddress"></address-fields>
+    <button id="showAutoCompleter" class="btn-underline pad-t-10" (click)="showAutoCompleter()">
+      {{ 'generic.address.showAutoCompleter' | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+$fonts-path: "fonts";
+$image-path: "images";
+
+@import "~digital-css/assets/stylesheets/aviva-theme";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+@import "../styles/_accordion";
+@import "../styles/_buttons";
+@import "../styles/_pagination";
+@import "../styles/_completer";
+@import "../styles/_form";
+@import "../styles/_icon";
+@import "../styles/_font";
+
+html, body{
+  height: 100%;
+  font-family: source_sans_proregular, sans-serif
+}
+
+a.active {
+  background-color: gray;
+}
+
+// Datepicker
+.datepicker {
+  table thead tr th .btn {
+    min-width: 0;
+  }
+}
+
+// Spinner
+.spinner-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pad-t-100 {
+  padding-top: 100px;
+}
+
+.mr-b-50 {
+  margin-bottom: 50px;
+}

@@ -1,0 +1,24 @@
+<!-- Spinner -->
+<loading-spinner *ngIf="ifShowSpinner" class="spinner-fullscreen"></loading-spinner>
+<!-- Login Form -->
+<div class="container pad-t-100">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>{{'login.title' | translate}}</h1><br>
+			<form>
+				<input type="text" name="user" placeholder="{{'login.username' | translate}}" [(ngModel)]="username">
+				<input type="password" name="pass" placeholder="{{'login.password' | translate}}" [(ngModel)]="password">
+				<input type="submit" name="login" class="login loginmodal-submit" value="{{'login.loginBtn' | translate}}" (click)="authenticate()">
+				<!-- Temporary code for broker portal -->
+				<input type="submit" name="brokerLogin" class="login loginmodal-submit" value="Login as broker" (click)="authenticateBroker()">
+			</form>
+			<div *ngIf="showErrorMsg" class="alert alert-danger">
+				{{'login.notMatched' | translate}}
+			</div>
+
+			<div class="login-help">
+				<span>{{'login.loginInstruction' | translate}}</span>
+			</div>
+		</div>
+	</div>
+</div>

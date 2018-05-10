@@ -1,0 +1,65 @@
+<header class="header-resp">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <div class="navbar-header-logo"></div>
+        <div class="navbar-toggle collapsed mb-menu-item menu" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"
+          aria-expanded="false">
+          <span class="icon"></span>
+          <span class="text">MENU</span>
+        </div>
+        <div class="navbar-toggle mb-menu-item sign-out" data-toggle="collapse" aria-expanded="false" *ngIf="auth === true">
+          <span class="icon"></span>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav navbar-left">
+          <li *ngIf="auth === true">
+            <span>
+              <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;{{ fname }} {{ lname }}</span>
+          </li>
+          <li *ngIf="auth === true">
+            <span>Last Visited: {{ lastLoginTime }}</span>
+          </li>
+        </ul>
+        <div *ngIf="initService.getUsername()">
+          <div class="header-title pull-left">
+            <button class="header-btn" (click)="onClickAllQuotes()">
+              <span>{{ 'header.allQuotes' | translate }}</span>
+              <span [ngClass]="{'underline': headerService.highlightName === 'allquotes'}"></span>
+            </button>
+          </div>
+          <div class="header-title pull-left">
+            <button class="header-btn" (click)="onClickNewQuote()">
+              <span>{{ 'header.newQuote' | translate }}</span>
+              <span [ngClass]="{'underline': headerService.highlightName === 'newquote'}"></span>
+            </button>
+          </div>
+          <div class="header-title pull-left">
+            <button class="header-btn" (click)="onClickDashboard()">
+              <span>{{ 'header.dashboard' | translate }}</span>
+              <span [ngClass]="{'underline': headerService.highlightName === 'dashboard'}"></span>
+            </button>
+          </div>
+          <!-- Report tab needs to be hidden for the upcoming release -->
+          <!-- <div class="header-title pull-left">
+            <button class="header-btn" (click)="onClickReport()">
+              <span>{{ 'header.report' | translate }}</span>
+              <span [ngClass]="{'underline': headerService.highlightName === 'report'}"></span>
+            </button>
+          </div> -->
+          <div class="pull-right header-title">
+            <button class="header-btn" (click)="showLogout = !showLogout">
+              <i class="fa fa-2x fa-user-circle-o mr-r-15" aria-hidden="true"></i>
+              <span class="align-middle mr-r-15">{{ initService.getUsername() }}</span>
+              <i class="fa fa-2x" [ngClass]="{'fa-angle-down': !showLogout}" aria-hidden="true"></i>
+              <i class="fa fa-2x" [ngClass]="{'fa-angle-up': showLogout}" aria-hidden="true"></i>
+            </button>
+            <div *ngIf="showLogout" class="text-center logout" (click)="showLogout = false; onClickLogout()">{{ 'header.logout.link' | translate }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,29 @@
+@import "../../../styles/quoter";
+
+:host /deep/ {
+  ng2-smart-table {
+    font-size: 14px;
+
+    .ng2-smart-sort-link {
+      border-bottom: none;
+    }
+
+    .ng2-smart-actions {
+      text-align: center;
+    }
+
+    .ng2-smart-action-custom-custom {
+      color: $primary-color-1;
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      border-bottom: none;
+      padding-left: 10px;
+      padding-bottom: 0;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}

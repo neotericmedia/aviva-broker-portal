@@ -1,0 +1,648 @@
+{
+    "login": {
+        "title": "Veuillez ouvrir une session",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "loginBtn": "Ouverture de session",
+        "loginInstruction": "Veuillez utiliser votre numéro d'employé (commençant par un e) et votre mot de passe quotidien pour ouvrir une session.",
+        "notMatched": "Le nom ou le mot de passe de l'utilisateur est erroné.",
+        "serverError": "La connexion n'a pu être établie en raison d'une erreur de serveur.",
+        "sessionExpired": "La session a expiré ou l'accès de l'utilisateur n'est pas autorisé. Vous serez redirigé vers la page d'ouverture de session…"
+    },
+    "yes": "Oui",
+    "no": "Non",
+    "cancel": "Annuler",
+    "loading": "Chargement...",
+    "invalidEmail": "Entrez une adresse courriel valide.",
+    "noResultsFound": "Aucun résultat trouvé.",
+    "quoteBreadcrumb": {
+        "businessInfo": "Info-Entreprise",
+        "coverageInfo": "Info-Garanties",
+        "summary": "Sommaire",
+        "bindInfo": "Infos acceptation"
+    },
+    "guard": {
+        "navigateMessage": "Êtes-vous sûr de vouloir quitter cette page et de ne pas enregistrer les changements que vous avez faits?",
+        "createNewQuote": "Are you sure you want to discard your changes and create a new quote? [TBD] [FR]",
+        "deleteConfirmation": "Êtes-vous certain de vouloir supprimer ce bénéficiaire des indemnités et/ou ce créancier hypothécaire?"
+    },
+    "header": {
+        "allQuotes": "Toutes les soumissions",
+        "newQuote": "Nouvelle soumission",
+        "dashboard": "Tableau de bord",
+        "report": "Rapport",
+        "logout": {
+            "link": "Fermer la session",
+            "status": {
+                "loggingOut": "Fermeture de session",
+                "error": "Échec de la fermeture de session"
+            }
+        }
+    },
+    "business": {
+        "notifications": {
+            "saveSuccess": "La soumission a été enregistrée avec succès.",
+            "saveError": "Une erreur est survenue pendant l'enregistrement - essayez de nouveau.",
+            "fieldError": "Veuillez corriger les erreurs dans le formulaire.",
+            "quoteCopied": "Soumission copiée"
+        },
+        "broker": {
+            "headTitle": "Code du courtier et nom du cabinet",
+            "placeholder": "Entrez le code du courtier et le nom du cabinet.",
+            "contactName": "Nom du responsable du cabinet",
+            "contactEmail": "Adresse électronique du cabinet"
+        },
+        "details": {
+            "headTitle": "Renseignements sur l'entreprise",
+            "title": {
+                "quoteNumber": "Numéro de soumission RTM",
+                "namedInsured": "Dénomination sociale de l'entreprise",
+                "operatingname": "Dénomination commerciale",
+                "relationToInsured": "Lien avec l'assuré",
+                "addressAutoCompleter": {
+                    "locationAddress": "Adresse",
+                    "mailingAddress": "Adresse postale",
+                    "changeAddress": "Changer l'adresse"
+                },
+                "address": {
+                    "unitNumber": "Numéro d'unité",
+                    "streetAddress": "Rue",
+                    "city": "Ville",
+                    "province": "Province / Territoire",
+                    "country": "Pays",
+                    "postalCode": "Code postal"
+                },
+                "mailingAddressQuestion": "Même que l'adresse postale?",
+                "industryCode": "Quel type d'activités mène l'entreprise?",
+                "annualRevenueCA": "Chiffre d'affaires annuel (Canada)",
+                "annualRevenueUS": "Chiffre d'affaires annuel (É.-U.)",
+                "annualRevenueFO": "Chiffre d'affaires annuel (Étranger)",
+                "annualPayrollCA": "Salaires (Canada)",
+                "annualPayrollUS": "Salaires (É.-U.)",
+                "annualPayrollFO": "Salaires (Étranger)",
+                "yearsInBusiness": "Nombre d'années en affaires",
+                "yearsInRelevantBusiness": "Nombre d'années d'expérience pertinente",
+                "numClaims": "Nombre de sinistres au cours des 5 dernières années",
+                "overClaimLimit": "L'assuré a-t-il déjà été victime d'un sinistre ayant donné lieu au versement d’une indemnité supérieure à <span class='no-wrap'>10 000 $?</span>",
+                "hasOperatingName": "Le client a-t-il une dénomination commerciale?",
+                "businessSetUp": "Sous quelle forme existe l'entreprise du client?",
+                "wasPolicyCancelled": "Est-il arrivé qu’Aviva ou un autre assureur résilie, annule ou ne renouvelle pas une police dont l’assuré était titulaire au cours des 5 dernières années?",
+                "displayBusinessName": {
+                    "1": "{{namedInsured}} et {{operatingName}}",
+                    "2": "{{namedInsured}} faisant affaire sous la raison sociale de {{operatingName}}",
+                    "3": "{{operatingName}} exploité(e) par {{namedInsured}}",
+                    "4": "{{namedInsured}} aux soins de {{operatingName}}",
+                    "5": "{{namedInsured}} titulaire d'attestation d'assurance pour {{operatingName}}",
+                    "6": "{{operatingName}} division de {{namedInsured}}",
+                    "7": "{{namedInsured}} sa Majesté la Reine du chef de la province ou du territoire concerné {{operatingName}}",
+                    "8": "{{namedInsured}} fonctionnant sous le nom de {{operatingName}}"
+                }
+            },
+            "placeholder": {
+                "namedInsured": "Entrez le nom de l'entreprise",
+                "operatingName": "Entrez le nom de l'assuré désigné",
+                "address": "Entrez l'adresse",
+                "mailingAddress": "Entrez l'adresse postale",
+                "industryCode": "Entrez la description des activités"
+            },
+            "options": {
+                "operatingName": {
+                    "yes": "Oui",
+                    "no": "Non"
+                },
+                "businessSetUp": {
+                    "1": "Personne physique",
+                    "2": "Société de personnes",
+                    "3": "Personne morale",
+                    "4": "Coentreprise"
+                },
+                "claimOptions": {
+                    "0": "Aucun(e)",
+                    "1": "1",
+                    "2": "2",
+                    "3": "3 ou plus"
+                },
+                "relationToInsured": {
+                    "1": "Assuré désigné supplémentaire",
+                    "2": "Faisant affaire sous la raison sociale de",
+                    "3": "Exploité(e) par",
+                    "4": "Aux soins de",
+                    "5": "Titulaire d'attestation d'assurance pour",
+                    "6": "Division de",
+                    "7": "Sa Majesté la Reine du chef de la province ou du territoire concerné",
+                    "8": "Fonctionnant sous le nom de"
+                }
+            },
+            "DnB": {
+                "pending": "Recherche de l'entreprise en cours...",
+                "DunsNumber": {
+                    "error": {
+                        "notFound": "Aucun résultat trouvé pour le nom et l'adresse de l'entreprise que vous avez entrés.",
+                        "moreThanOneFound": "Aucun résultat unique trouvé pour le nom et l'adresse de l'entreprise que vous avez entrés.",
+                        "exception": "Échec de l'appel au service de recherche d'entreprises."
+                    }
+                },
+                "GDM": {
+                    "success": "Appel au service GDM de D & B terminé. Les données suivantes ont été extraites :",
+                    "error": {
+                        "notFound": "Une erreur est survenue dans le processus d'appel au service GDM de D & B.",
+                        "exception": "Échec de l'appel au service GDM de D & B."
+                    }
+                },
+                "fieldsTranslate": {
+                    "yearsInBusiness": "Nombre d'années en affaires",
+                    "numOfEmployees": "Nombre d'employés",
+                    "suitJudgementExists": "Poursuites ou jugements en cours",
+                    "financialStressScore": "Score de défaillance financière",
+                    "commercialCreditScore": "Cote de crédit commercial"
+                }
+            },
+            "errors": {
+                "effectiveDt": {
+                    "required": "La date d'effet doit être entrée."
+                },
+                "expiryDt": {
+                    "required": "La date d'expiration doit être entrée."
+                },
+                "brokerCode": {
+                    "required": "Le code du courtier et le nom du cabinet doivent être entrés."
+                },
+                "brokerContactName": {
+                    "required": "Le nom du responsable du cabinet doit être entré."
+                },
+                "quoteNumber": {
+                    "required": "Le numéro de la soumission doit être entré.",
+                    "pattern": "Le numéro de la soumission devrait comporter 8 chiffres.",
+                    "exists": "Le(s) numéro(s) de soumission(s) suivant(s) existe(nt) déjà : {{quoteNumbers}}"
+                },
+                "namedInsured": {
+                    "required": "La dénomination sociale doit être entrée."
+                },
+                "relationToInsured": {
+                    "required": "Indiquez le lien avec l’assuré."
+                },
+                "operatingName": {
+                    "required": "La dénomination sociale est obligatoire."
+                },
+                "businessSetup": {
+                    "required": "Sélectionnez la forme sous laquelle existe l'entreprise du client."
+                },
+                "industryCode": {
+                    "required": "Veuillez entrer la description des activités ou le code d'activité et sélectionner les résultats pertinents."
+                },
+                "annualPayrollCA": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "annualPayrollUS": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "annualPayrollFO": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "annualRevenueCA": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "annualRevenueUS": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "annualRevenueFO": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "yearsInBusiness": {
+                    "required": "Le nombre d'années en affaires doit être entré."
+                },
+                "yearsInRelevantBusiness": {
+                    "required": "Le nombre d'années d'expérience pertinente doit être entré."
+                },
+                "numOfClaims": {
+                    "required": "Le nombre de sinistres doit être entré."
+                },
+                "overClaimLimit": {
+                    "required": "Veuillez sélectionner Oui ou Non."
+                },
+                "wasPolicyCancelled": {
+                    "required": "Veuillez sélectionner Oui ou Non."
+                },
+                "address": {
+                    "streetAddress": {
+                        "required": "Ce champ doit être rempli."
+                    },
+                    "city": {
+                        "required": "Ce champ doit être rempli."
+                    },
+                    "province": {
+                        "required": "Ce champ doit être rempli."
+                    },
+                    "country": {
+                        "required": "Ce champ doit être rempli."
+                    },
+                    "postalCode": {
+                        "required": "Ce champ doit être rempli."
+                    }
+                },
+                "addressAutoCompleter": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "claims": {
+                    "lineOfBusiness": {
+                        "required": "Veuillez sélectionner le secteur d'activités."
+                    },
+                    "status": {
+                        "required": "Veuillez sélectionner l'état."
+                    },
+                    "lossDate": {
+                        "required": "Veuillez sélectionner la date du sinistre à partir du calendrier."
+                    },
+                    "lossType": {
+                        "required": "Veuillez sélectionner le type de sinistre."
+                    }
+                }
+            },
+            "tooltip": {
+                "address": "Seules les adresses au Canada sont autorisées."
+            }
+        },
+        "coverage": {
+            "headTitle": "Garantie",
+            "mandatory": "Obligatoire",
+            "mandatoryCoverages": "Based on the information provided, the coverages below are mandatory on any Aviva policy.[FR]",
+            "optional": "Facultatif"            
+        },
+        "claims": {
+            "headTitle": "Renseignements sur le sinistre",
+            "claimTitle": "Sinistre",
+            "title": {
+                "lineOfBusiness": "Branche d'assurance",
+                "status": "État",
+                "lossDate": "Date du sinistre",
+                "lossType": "Type de sinistre"
+            },
+            "none": "Aucun(e)",
+            "fiverOrMore": "5 ou plus",
+            "notification": {
+                "getQustionsOptionsError": "Échec du chargement des choix de questions relatives aux sinistres",
+                "getProvinceOptionsError": "Échec du téléchargement des  options en lien avec les provinces."
+            }
+        },
+        "dnb": {
+            "lookupCall": "AAppel au service de recherche de D & B en cours…",
+            "resultsFound": "Résultats trouvés.",
+            "dunsNumUsage": "Appel au service GDM de D & B à l'aide du numéro D-U-N-S : ",
+            "lookupDone": "Accès au service de recherche de D & B terminé.",
+            "lookupFailed": "Échec de l'appel au service de recherche de D & B.",
+            "gdmServiceCall": "Appel au service GDM de D & B en cours…",
+            "gdmServiceDone": "Appel au service GDM de D & B terminé.",
+            "gdmDerviceFailed": "La recherche par le service GDM de D & B n'a pas donné de résultats."
+        }
+    },
+    "lobCoverage": {
+        "coverage": {
+            "title": {
+                "fus": {
+                    "headTitle": "Résultats de rapports SIAI",
+                    "title": {
+                        "territoryGrade": "Niveau de protection provinciale/territoriale",
+                        "townGrade": "Niveau de protection municipale"
+                    }
+                },
+                "property": {
+                    "deductible": "Franchise",
+                    "limit": "Montant de garantie"
+                }
+            },
+            "errors": {
+                "required": "Ce champ doit être rempli.",
+                "lessThanMinimum": "Minimum",
+                "greaterThanMaximum": "Maximum",
+                "lob": "Veuillez corriger toutes les erreurs relatives aux garanties et recommencer la soumission."
+            },
+            "relationship": {
+                "cmGroupsFailure": "Sélectionnez obligatoirement au moins un des éléments suivants; {{coverages}}.",
+                "ceGroupsFailure": "Sélectionnez obligatoirement un des éléments suivants; {{coverages}}.",
+                "cdGroupsFailure": "Sélectionnez obligatoirement toutes ces garanties, ou aucune; {{coverages}}.",
+                "meGroupsFailure": "Only one can be selected; {{coverages}}. [FR]",
+                "ppGroupsFailure": "Sélectionnez obligatoirement une des garanties parentes de {{childCoverage}}; {{coverages}}.",
+                "nonEmptyGroupsFailure": "Sélectionnez obligatoirement au moins une garantie.",
+                "CM": "Au moins l'une de ces garanties doit être choisie : ",
+                "CE": "Veuillez choisir au moins l'une de ces garanties : ",
+                "ME": "Il n'est possible de sélectionner qu'une seule de ces garanties à la fois.",
+                "CD": "Sélectionnez toutes ces garanties ensemble, ou n'en sélectionnez aucune."
+            },
+            "zone": {
+                "title": "Zone:",
+                "range": {
+                    "L": "Indice de risque faible",
+                    "M": "Indice de risque modéré",
+                    "H": "Indice de risque élevé",
+                    "D": "Refus du risque"
+                }
+            },
+            "tooltip": {
+                "titleCoverage": "This is a title Coverage. [FR]",
+                "associatedCoverage": "Please select a stand alone coverage before select this associated coverage. [TBD] [FR]"
+            }
+        },
+        "lobQuestions": {
+            "title": {},
+            "errors": {
+                "answer": {
+                    "required": "Une réponse est requise.",
+                    "yearBuiltLength": "L'année de construction doit comporter 4 chiffres - ex. : 1990."
+                },
+                "lobQuestions": "Veuillez répondre aux questions portant sur la garantie.",
+                "loadLobQuestions": "Échec du chargement des questions relatives à la branche d'assurance"
+            },
+            "asyncTask": {
+                "pendingFUS": "Appel au SIAI en cours…",
+                "successFUS": "Appel au SIAI terminé",
+                "failureFUS": "Échec de l'appel au SIAI"
+            },
+            "fieldsTranslate": {
+                "territoryGrade": "Niveau de protection provinciale/territoriale",
+                "townGrade": "Niveau de protection municipale",
+                "yearBuilt": "Année de construction",
+                "storeys": "Nombre d'étages",
+                "constructionCode": "Type de construction",
+                "totalArea": "Superficie totale en pieds carrés"
+            }
+        },
+        "notifications": {
+            "loadLOBsError": "Échec du chargement des garanties de cette branche d'assurance.",
+            "loadZonesError": "Échec du chargement des garanties avec zone."
+        }
+    },
+    "summary": {
+        "deviation": {
+            "error": "Fourchette : -100 à 100."
+        },
+        "sendPdf": {
+            "title": {
+                "subject": "Objet",
+                "sender": "Expéditeur",
+                "recipient": "Destinataire",
+                "message": "Message",
+                "reviewemail": "Veuillez examiner ceci."
+            },
+            "errors": {
+                "subject": {
+                    "required": "L'objet doit être entré."
+                },
+                "message": {
+                    "required": "Le message doit être entré."
+                }
+            },
+            "placeholder": {
+                "subject": "Entrez l'objet du courriel",
+                "sender": "Entrez l'adresse électronique de l'expéditeur du courriel",
+                "recipient": "Entrez l'adresse électronique du destinataire du courriel",
+                "message": "Entrez le contenu du courriel"
+            },
+            "defaultValues": {
+                "subject": "Soumission Aviva : {{namedInsured}}",
+                "message": "Veuillez voir votre soumission ci-jointe."
+            },
+            "result": {
+                "success": "La soumission a été envoyée avec succès!",
+                "failure": "Échec de l'envoi du courriel de transmission de la soumission."
+            }
+        },
+        "coverage": {
+            "column": {
+                "coverage": "Garantie",
+                "limit": "Montant de garantie",
+                "deductible": "Franchise",
+                "rate": "Taux",
+                "premium": "Prime"
+            },
+            "included": "Inclus(e)",
+            "ALSLimit": "Montant de garantie PES",
+            "deductibles": {
+                "PD": "PD : ",
+                "BI": "BI : "
+            }
+        },
+        "quoteConditions": {
+            "header": {
+                "title": "Conditions de soumission"
+            }
+        }
+    },
+    "dashboard": {
+        "industryCodes": {
+            "title": "Codes d'activité",
+            "summary": "Soumissions, par codes d'activités"
+        },
+        "brokerCodes": {
+            "title": "Codes de courtiers",
+            "summary": "Soumissions, par codes de courtiers"
+        },
+        "quoteStatus": {
+            "title": "Soumissions",
+            "summary": "Soumissions, par état",
+            "xAxisLabel": "État",
+            "yAxisLabel": "Montant"
+        },
+        "latestQuotes": {
+            "title": "Soumissions les plus récentes",
+            "summary": "Soumissions les plus récentes créées par l'utilisateur",
+            "columns": {
+                "quoteNumber": "Numéro de la soumission",
+                "status": "État",
+                "brokerCode": "Code du courtier",
+                "nameInsured": "Nom de l'entreprise",
+                "createdDate": "Date de la création"
+            }
+        },
+        "notifications": {
+            "noAnalytics": "Le système ne parvient pas à extraire les données d'analyse.",
+            "noLatestQuotes": "Le système ne parvient pas à récupérer les soumissions les plus récentes."
+        }
+    },
+    "buttons": {
+        "back": "Précédent",
+        "save": "Enregistrer",
+        "next": "Suivant",
+        "bind": "Établir engagement",
+        "cancelBind": "Cancel Bind [FR]",
+        "issuePolicy": "Issue Policy [FR]",
+        "returnToDashboard": "Retour au Tableau de bord",
+        "sendPdf": "Envoi en format PDF",
+        "filter": "Filtrer",
+        "download": "Télécharger",
+        "add": "Ajouter",
+        "editCoverage": "Edit Coverage [FR]"
+    },
+    "datepicker": {
+        "effectiveDate": "Date d'effet",
+        "expiryDate": "Date d'expiration",
+        "fromDate": "Du",
+        "toDate": "Au"
+    },
+    "form": {
+        "dropdown": {
+            "select": " -- Sélectionner --"
+        },
+        "input": {
+            "placeholder": "Entrer le montant"
+        }
+    },
+    "quoteSearch": {
+        "date": "Date",
+        "quoteNumber": "Numéro de la soumission",
+        "companyName": "Nom de l'entreprise",
+        "broker": "Courtier",
+        "premium": "Prime",
+        "status": "État",
+        "actions": "Actions",
+        "copy": "Copier",
+        "edit": "Modifier",
+        "history": "Voir l'historique de la soumission.",
+        "searchByQuoteNum": "Chercher par numéro de soumission",
+        "filterByDate": "Filtrer les soumissions par date",
+        "error": {
+            "noData": "La récupération du dossier de la soumission a échoué."
+        },
+        "notFound": "Aucun résultat trouvé."
+    },
+    "industrycodesearch": {
+        "page": {
+            "title1": "Catalyst Broker Portal.[FR]",
+            "title2": "Small business, made easy[FR]"
+        },
+        "searchTitle": "In what industry is the business?[FR]",
+        "quoteExists": "Already have a quote?[FR]",
+        "quoteExistsBtn": "Click here[FR]",
+        "contactUs": "There when you need us[FR]",
+        "contactPhoneNumber": "1-866-692-8482",
+        "contactUsDescription": "Call us and an underwriter will ensure you receive fast and reliable personal support.[FR]",
+        "policyRestrictions": "Policy Restrictions[FR]",
+        "placeholder": "Sales, Flowerist ...[FR]",
+        "startQuote": "Start Quote[FR]"
+    },
+    "quoteReport": {
+        "quoteNumber": "Modifications à l'état de la soumission",
+        "reportByDatesAndType": "Rapport par dates et type",
+        "error": {
+            "quoteNumber": "Veuillez entrer le numéro de soumission.",
+            "fields": "Veuillez entrer les dates de début et de fin de la période visée ainsi que le type de rapport pour pouvoir lancer la recherche.",
+            "noReport": "Le rapport ne peut pas être généré à partir de ce qui a été entré."
+        }
+    },
+    "bind": {
+        "mortgageePrefix": "Créancier hypothécaire: {{ name }}",
+        "lossPayeePrefix": "Créancier: {{ name }}",
+        "payeeMortgagee": "Loss Payee/Mortgagee [FR]",
+        "addPayeeMortgagee": "Add Payee/Mortgagee[FR]",
+        "paymentInformation": "Payment Information [FR]",
+        "paymentSetup": "How would the customer like their payments set up? [FR]",
+        "agencyBill": "Agency Bill [FR]",
+        "directBill": "Direct Bill [FR]",
+        "name": "Nom",
+        "type": "Type",
+        "buttons": {
+            "addAnother": "Enregistrer et ajouter autre",
+            "close": "Enregistrer et fermer"
+        },
+        "toast": {
+            "fieldError": "Veuillez corriger les erreurs dans le formulaire.",
+            "getQuoteError": "Le système n'a pas réussi à récupérer les informations de cette soumission: {{quoteNumber}}",
+            "getBindTypesError": "Échec du téléchargement des différentes options du type de formulaire.",
+            "lastFormInvalid": "Veuillez remplir le dernier formulaire avant d'en ajouter un nouveau.",
+            "completeBeforeClose": "Veuillez remplir le formulaire avant de quitter la page.",
+            "unbindSuccess": "L'acceptation de la soumission a bien été annulée. Redirection vers le sommaire de la soumission.",
+            "unbindError": "Échec de l'annulation de la soumission : {{quoteNumber}}"
+        },
+        "saveSuccess": "Les informations en lien avec l'acceptation de la soumission ont bien été enregistrées.",
+        "saveFailure": "Échec de l'enregistrement des informations en lien avec l'acceptation de la soumission.  ",
+        "unbindConfirm": "Êtes-vous sûr de vouloir annuler l'engagement?",
+        "deleteConfirm": "Êtes-vous sûr de vouloir supprimer?",
+        "policyNumber": "Numéro de police",
+        "startDate": "Date de début",
+        "endDate": "Date de fin"
+    },
+    "generic": {
+        "error": "Une erreur inopinée est survenue. Si le problème persiste, communiquez avec l'administrateur ou le Soutien technique.",
+        "enterQuoteNum": "Entrer le numéro de la soumission",
+        "required": "Ce champ doit être rempli.",
+        "getProvinceOptionsError": "Failed to load province options.[FR]",
+        "tooltip": {
+            "address": "Seules les adresses au Canada sont autorisées."
+        },
+        "placeholder": {
+            "addressAutoCompleter": "Entrez l'adresse"
+        },
+        "address": {
+            "title": {
+                "locationAddress": "Adresse",
+                "unitNumber": "Numéro d'unité",
+                "unitNumberPre": "# appart.",
+                "streetAddress": "Rue",
+                "city": "Ville",
+                "province": "Province / Territoire",
+                "postalCode": "Code postal"
+            },
+            "error": {
+                "addressAutoCompleter": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "streetAddress": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "city": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "province": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "postalCode": {
+                    "required": "Ce champ doit être rempli."
+                },
+                "country": {
+                    "notCanada": "Le système n'accepte que les adresses au Canada."
+                }
+            },
+            "changeAddress": "Changer l'adresse",
+            "showAutoCompleter": "Chercher l'adresse"
+        },
+        "businessDetails": {
+            "title": {
+                "aboutTheBusiness": "About the Business[FR]",
+                "address": "Adresse",
+                "description": "Description",
+                "businessDescription": "Business Description[FR]",
+                "industryCode": "Code d'activité"
+            }
+        },
+        "brokerDetails": {
+            "headTitle": "Renseignements sur le courtier",
+            "title": {
+                "brokerage": "Cabinet de courtage",
+                "contactName": "Nom du responsable",
+                "contactEmail": "Adresse électronique du responsable"
+            }
+        },
+        "premiumDetails": {
+            "headTitle": "Précisions sur la prime",
+            "title": {
+                "effectiveDate": "Date d'effet",
+                "expiryDate": "Date d'expiration",
+                "quoteNumber": "Numéro de la soumission",
+                "commission": "Commission",
+                "deviateBy": "Déviation de : ",
+                "deviation": "Déviation",
+                "newPremium": "Nouvelle prime",
+                "premium": "Prime",
+                "basePremium": "Prime de base",
+                "annualPremium": "Prime annuelle",
+                "percentDeviated": "Pourcentage de déviation",
+                "reset": "Réinitialisation",
+                "noPremiumCoveragesAvailable": "No premium coverages available [FR]"
+            },
+            "calculationError": "Échec du calcul de la prime. Veuillez vérifier la déviation."
+        }
+    },
+    "version": {
+        "history": "Historique des versions ({{quoteNumber}})",
+        "notFound": "Aucun historique de soumission trouvé"
+    }
+}
